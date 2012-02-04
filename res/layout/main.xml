@@ -16,4 +16,19 @@
 	    android:textColor="@color/black"
 	    android:textSize="@dimen/digitalClock_textSize"/>
 
+	<EditText
+	    android:id="@+id/editText1"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:hint="@string/editText1_hint" >
+
+	    <requestFocus />
+	</EditText>
+
+	<Button
+	    android:id="@+id/button1"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:text="@string/button1_text" />
+
 </LinearLayout>

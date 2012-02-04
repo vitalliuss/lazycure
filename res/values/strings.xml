@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">LazyCure</string>
+    <string name="button1_text">Done!</string>
+    <string name="editText1_hint">What are you doing now?</string>
 </resources>
