@@ -2,5 +2,18 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:orientation="vertical" >
+    android:baselineAligned="true"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:background="@color/white" >
+
+	<DigitalClock
+	    android:id="@+id/digitalClock1"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_gravity="top"
+	    android:gravity="center"
+	    android:textColor="@color/black"
+	    android:textSize="@dimen/digitalClock_textSize"/>
+
 </LinearLayout>
