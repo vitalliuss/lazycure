@@ -1,13 +1,15 @@
 package com.github.lazycure;
 
 import android.app.Activity;
-import android.os.Bundle;
 
-public class LazycureActivity extends Activity {
-    /** Called when the activity is first created. */
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.main);
-    }
+public class LazyCureActivity extends Activity {
+
+	public LazyCureActivity() {
+		super();
+	}
+
+	protected LazyCureApplication getStuffApplication() {
+		return (LazyCureApplication)getApplication();
+	}
+
 }

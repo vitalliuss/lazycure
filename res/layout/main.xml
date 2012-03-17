@@ -1,34 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:baselineAligned="true"
-    android:gravity="center_horizontal"
+    android:background="@color/white"
     android:orientation="vertical"
-    android:background="@color/white" >
+    android:color="@color/black" >
 
-	<DigitalClock
-	    android:id="@+id/digitalClock1"
-	    android:layout_width="fill_parent"
-	    android:layout_height="wrap_content"
-	    android:layout_gravity="top"
-	    android:gravity="center"
-	    android:textColor="@color/black"
-	    android:textSize="@dimen/digitalClock_textSize"/>
+    <DigitalClock
+        android:id="@+id/digitalClock1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/black"
+        android:textSize="@dimen/digitalClock_textSize" />
 
-	<EditText
-	    android:id="@+id/editText1"
-	    android:layout_width="fill_parent"
-	    android:layout_height="wrap_content"
-	    android:hint="@string/editText1_hint" >
+    <EditText
+        android:id="@+id/input"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/digitalClock1"
+        android:hint="@string/input_hint" >
 
-	    <requestFocus />
-	</EditText>
+        <requestFocus />
+    </EditText>
 
-	<Button
-	    android:id="@+id/button1"
-	    android:layout_width="fill_parent"
-	    android:layout_height="wrap_content"
-	    android:text="@string/button1_text" />
+    <Button
+        android:id="@+id/done_button"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/input"
+        android:text="@string/doneButton_text" />
 
-</LinearLayout>
+    <TextView
+        android:id="@+id/activities_title"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/done_button"
+        android:text="@string/activities" />
+
+    <TextView
+        android:id="@+id/activities_list_text"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/cancel_button"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/activities_title" />
+
+    <Button
+        android:id="@+id/cancel_button"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:text="@string/cancel" />
+
+</RelativeLayout>
