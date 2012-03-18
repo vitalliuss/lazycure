@@ -60,7 +60,7 @@ public class ViewActivitiesActivity extends LazyCureActivity {
 	
 	private void addActivity() {
 		String activityName = activityNameEditText.getText().toString();
-		if (activityName != ""){
+		if (activityName.length() != 0){
 			Activity a = new Activity(activityName);
 			getStuffApplication().addActivity(a);
 		}
