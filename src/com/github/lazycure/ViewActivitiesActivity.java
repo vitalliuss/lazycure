@@ -1,6 +1,8 @@
 package com.github.lazycure;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import com.github.lazycure.activities.Activity;
 
@@ -32,10 +34,17 @@ public class ViewActivitiesActivity extends LazyCureActivity {
 	}
 
 	private void showActivities() {
+		String prefix = "> ";
+		String delimiter = " - ";
+		SimpleDateFormat ft = new SimpleDateFormat ("hh:mm:ss");
 		ArrayList<Activity> activities = getStuffApplication().getCurrentActivities();
 		StringBuffer sb = new StringBuffer();
 		for (Activity t:activities) {
-			sb.append(String.format("* %s\n", t.toString()));
+			sb.append(prefix);
+			sb.append(t.getName().toString());
+			sb.append(delimiter);
+			sb.append(ft.format(t.getStartTime()));
+			sb.append("\n");
 		}
 		activityText.setText(sb.toString());
 	}
@@ -58,10 +67,15 @@ public class ViewActivitiesActivity extends LazyCureActivity {
 		});
 	}
 	
+	public Date getCuttentDate(){
+		Date date = new Date();
+		return date;
+	}
+	
 	private void addActivity() {
 		String activityName = activityNameEditText.getText().toString();
 		if (activityName.length() != 0){
-			Activity a = new Activity(activityName);
+			Activity a = new Activity(activityName, getCuttentDate(), null);
 			getStuffApplication().addActivity(a);
 		}
 		clearInput();
