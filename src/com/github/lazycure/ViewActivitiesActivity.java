@@ -6,8 +6,10 @@ import java.util.Date;
 
 import com.github.lazycure.activities.Activity;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -84,6 +86,8 @@ public class ViewActivitiesActivity extends LazyCureActivity {
 	
 	protected void clearInput() {
 		activityNameEditText.setText("");
+		InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+		imm.hideSoftInputFromWindow(activityNameEditText.getWindowToken(), 0);
 	}
 	
 }
