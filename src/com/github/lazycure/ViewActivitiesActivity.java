@@ -1,13 +1,17 @@
 package com.github.lazycure;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
+import java.util.List;
 
 import com.github.lazycure.activities.Activity;
+import com.github.lazycure.db.DatabaseHandler;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
+import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
@@ -20,6 +24,7 @@ public class ViewActivitiesActivity extends LazyCureActivity {
 	private TextView activityText;
 	private EditText activityNameEditText;
 	private Button cancelButton;
+	DatabaseHandler db = new DatabaseHandler(this);
 
 	@Override
     public void onCreate(Bundle savedInstanceState) {
@@ -36,10 +41,13 @@ public class ViewActivitiesActivity extends LazyCureActivity {
 	}
 
 	private void showActivities() {
+		//
 		String prefix = "> ";
 		String delimiter = " - ";
 		SimpleDateFormat ft = new SimpleDateFormat ("hh:mm:ss");
-		ArrayList<Activity> activities = getStuffApplication().getCurrentActivities();
+        List<Activity> activities = db.getAllActivities();
+        //Reverse the activities order
+        Collections.reverse(activities);
 		StringBuffer sb = new StringBuffer();
 		for (Activity t:activities) {
 			sb.append(prefix);
@@ -48,6 +56,7 @@ public class ViewActivitiesActivity extends LazyCureActivity {
 			sb.append(ft.format(t.getStartTime()));
 			sb.append("\n");
 		}
+		activityText.setMovementMethod(new ScrollingMovementMethod());
 		activityText.setText(sb.toString());
 	}
 
@@ -77,8 +86,8 @@ public class ViewActivitiesActivity extends LazyCureActivity {
 	private void addActivity() {
 		String activityName = activityNameEditText.getText().toString();
 		if (activityName.length() != 0){
-			Activity a = new Activity(activityName, getCuttentDate(), null);
-			getStuffApplication().addActivity(a);
+			Log.d("Insert: " , "Inserting [" + activityName + "] With date: " + getCuttentDate().toString());
+	        db.addActivity(new Activity(activityName, getCuttentDate(), null));
 		}
 		clearInput();
 		showActivities();

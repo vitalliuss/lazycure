@@ -46,6 +46,8 @@
     <TextView
         android:id="@+id/activities_list_text"
         android:textColor="@color/black"
+		android:scrollbars = "vertical"
+		android:maxLines = "100"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_above="@+id/cancel_button"
