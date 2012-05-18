@@ -4,6 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
+import java.util.TimeZone;
 
 import com.github.lazycure.activities.Activity;
 import com.github.lazycure.db.DatabaseHandler;
@@ -44,6 +45,7 @@ public class ViewActivitiesActivity extends LazyCureActivity {
 		String prefix = "> ";
 		String delimiter = " - ";
 		SimpleDateFormat ft = new SimpleDateFormat ("HH:mm:ss");
+		ft.setTimeZone(TimeZone.getTimeZone("UTC"));
         List<Activity> activities = db.getAllActivities();
         //Reverse the activities order
         Collections.reverse(activities);
