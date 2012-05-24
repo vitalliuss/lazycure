@@ -24,7 +24,6 @@ public class ViewActivitiesActivity extends LazyCureActivity {
 	private Button doneButton;
 	private TextView activityText;
 	private EditText activityNameEditText;
-	private Button cancelButton;
 	DatabaseHandler db = new DatabaseHandler(this);
 
 	@Override
@@ -74,16 +73,10 @@ public class ViewActivitiesActivity extends LazyCureActivity {
 		doneButton = (Button)findViewById(R.id.done_button);
 		activityText = (TextView)findViewById(R.id.activities_list_text);
 		activityNameEditText = (EditText)findViewById(R.id.input);
-		cancelButton = (Button)findViewById(R.id.cancel_button);
 		
 		doneButton.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				addActivity();
-			}
-		});
-		cancelButton.setOnClickListener(new View.OnClickListener() {
-			public void onClick(View v) {
-				clearInput();
 			}
 		});
 

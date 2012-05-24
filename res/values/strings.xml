@@ -4,5 +4,4 @@
     <string name="activities">Activities:</string>
     <string name="doneButton_text">Done!</string>
     <string name="input_hint">What are you doing now?</string>
-    <string name="cancel">Cancel</string>
 </resources>

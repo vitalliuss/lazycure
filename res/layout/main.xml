@@ -42,24 +42,16 @@
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/done_button"
         android:text="@string/activities" />
-
+
     <TextView
         android:id="@+id/activities_list_text"
-        android:textColor="@color/black"
-		android:scrollbars = "vertical"
-		android:maxLines = "100"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/cancel_button"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/activities_title" />
-
-    <Button
-        android:id="@+id/cancel_button"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:text="@string/cancel" />
+        android:layout_below="@+id/activities_title"
+        android:maxLines="100"
+        android:scrollbars="vertical"
+        android:textColor="@color/black" />
 
 </RelativeLayout>
