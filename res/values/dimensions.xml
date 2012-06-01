@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="digitalClock_textSize">50sp</dimen>
+    <dimen name="chronometer_textSize">50sp</dimen>
 </resources>

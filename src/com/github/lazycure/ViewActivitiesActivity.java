@@ -11,11 +11,13 @@ import com.github.lazycure.db.DatabaseHandler;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
+import android.widget.Chronometer;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -24,6 +26,7 @@ public class ViewActivitiesActivity extends LazyCureActivity {
 	private Button doneButton;
 	private TextView activityText;
 	private EditText activityNameEditText;
+	private Chronometer chronometer;
 	DatabaseHandler db = new DatabaseHandler(this);
 
 	@Override
@@ -73,6 +76,7 @@ public class ViewActivitiesActivity extends LazyCureActivity {
 		doneButton = (Button)findViewById(R.id.done_button);
 		activityText = (TextView)findViewById(R.id.activities_list_text);
 		activityNameEditText = (EditText)findViewById(R.id.input);
+		chronometer = (Chronometer)findViewById(R.id.chronometer);
 		
 		doneButton.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
@@ -93,6 +97,9 @@ public class ViewActivitiesActivity extends LazyCureActivity {
 		if (activityName.length() != 0){
 			Log.d("Insert: " , "Inserting [" + activityName + "] with date: " + getCuttentDate().toString());
 	        db.addActivity(new Activity(activityName, getCuttentDate(), null));
+	        //Reset timer
+	        chronometer.setBase(SystemClock.elapsedRealtime());
+	        chronometer.start();
 		}
 		clearInput();
 		showActivities();
