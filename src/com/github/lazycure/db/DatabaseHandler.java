@@ -28,7 +28,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
  
     // Activities Table Columns names
     private static final String KEY_NAME = "name";
-    private static final String KEY_START_DATE = "start_date";
+    private static final String KEY_FINISH_DATE = "finish_date";
 
     public DatabaseHandler(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -39,7 +39,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         String CREATE_ACTIVITIES_TABLE = "CREATE TABLE " + TABLE_ACTIVITIES + "("
                 + KEY_NAME + " TEXT,"
-                + KEY_START_DATE + " TEXT" + ")";
+                + KEY_FINISH_DATE + " TEXT" + ")";
         db.execSQL(CREATE_ACTIVITIES_TABLE);
     }
 
@@ -60,7 +60,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
      
         ContentValues values = new ContentValues();
         values.put(KEY_NAME, activity.getName()); // Activity Name
-        values.put(KEY_START_DATE, dateFormat.format(activity.getStartTime())); // Activity start date
+        values.put(KEY_FINISH_DATE, dateFormat.format(activity.getFinishTime())); // Activity start date
      
         // Inserting Row
         db.insert(TABLE_ACTIVITIES, null, values);
@@ -83,14 +83,14 @@ public class DatabaseHandler extends SQLiteOpenHelper {
            do {
         	   String name = cursor.getString(0);
         	   String date = cursor.getString(1);
-        	   Date startDate = null;
+        	   Date finishDate = null;
 				try {
-					startDate = dateFormat.parse(date);
+					finishDate = dateFormat.parse(date);
 				} catch (ParseException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-        	   Activity activity = new Activity(name, startDate, null);
+        	   Activity activity = new Activity(name, null, finishDate);
                // Adding activity to list
         	   activityList.add(activity);
            } while (cursor.moveToNext());

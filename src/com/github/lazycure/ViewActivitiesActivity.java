@@ -75,30 +75,34 @@ public class ViewActivitiesActivity extends LazyCureActivity {
 		SimpleDateFormat ft = new SimpleDateFormat ("HH:mm:ss");
 		ft.setTimeZone(TimeZone.getTimeZone("UTC"));
         List<Activity> activities = db.getAllActivities();
-        //Reverse the activities order
-        Collections.reverse(activities);
         Log.d("List: " , "Activities size: " + activities.size());
+        //Update missing time records for all activities
+		StringBuffer sb = new StringBuffer();
+		for (int i=1;i<activities.size();i++){
+			if (activities.get(i-1).getFinishTime() != null){
+				activities.get(i).setStartTime(activities.get(i-1).getFinishTime());
+			}
+		}
+		//Reverse the activities order
+        Collections.reverse(activities);
         if (activities.size() != 0){
 			//Set the latest activity time for timeLabel
-			lastActivity = activities.get(0).getStartTime().getTime();
-			Log.d("Date: " , "lastActivity time is [" + activities.get(0).getStartTime() +"]");
+			lastActivity = activities.get(0).getFinishTime().getTime();
+			Log.d("Date: " , "lastActivity finish time is [" + activities.get(0).getFinishTime() +"]");
         }
 		else{
 			lastActivity = System.currentTimeMillis();
 		}
         Log.d("Date: " , "lastActivity value is [" + lastActivity +"]");
-        //Print out the activities
-		StringBuffer sb = new StringBuffer();
-		for (int i=1;i<activities.size();i++){
-			if (activities.get(i-1).getStartTime() != null){
-				activities.get(i).setFinishTime(activities.get(i-1).getStartTime());
-			}
-		}
+		//Print out the activities
 		for (Activity t:activities) {
 			sb.append(prefix);
 			sb.append(t.getName().toString());
 			sb.append(delimiter);
-			if (t.getFinishTime() != null){
+			if (t.getFinishTime() != null && t.getStartTime() != null){
+				Log.d("Date: " , "Activity [" + t.getName().toString() + "]:" +
+						" Start time  " + ft.format(t.getStartTime()) +
+						", Finish time: [" + ft.format(t.getFinishTime()));
 				Date delta = new Date(t.getFinishTime().getTime() - t.getStartTime().getTime());
 				Log.d("Date: " , "Inserting [" + t.getName().toString() + "] with duration: " + ft.format(delta));
 				sb.append(ft.format(delta));
@@ -133,8 +137,8 @@ public class ViewActivitiesActivity extends LazyCureActivity {
 	private void addActivity() {
 		String activityName = activityNameEditText.getText().toString();
 		if (activityName.length() != 0){
-			Log.d("Insert: " , "Inserting [" + activityName + "] with date: " + getCurrentDate().toString());
-	        db.addActivity(new Activity(activityName, getCurrentDate(), null));
+			Log.d("Insert: " , "Inserting [" + activityName + "] with finish date: " + getCurrentDate().toString());
+	        db.addActivity(new Activity(activityName, null, getCurrentDate()));
 		}
 		clearInput();
 		showActivities();
