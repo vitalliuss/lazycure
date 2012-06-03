@@ -1,0 +1,5 @@
+LazyCure 0.4:
+ * user can create an activity
+ * user can see a list of latest 100 activities with names and durations
+ * user can see latest activities at the top of the list
+ * user can see the digitat clock shows time elapsed since the latest activity
