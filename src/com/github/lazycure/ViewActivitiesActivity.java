@@ -11,23 +11,49 @@ import com.github.lazycure.db.DatabaseHandler;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.os.SystemClock;
+import android.os.Handler;
+import android.os.Message;
 import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
-import android.widget.Chronometer;
 import android.widget.EditText;
 import android.widget.TextView;
 
 public class ViewActivitiesActivity extends LazyCureActivity {
 
+	private long lastActivity = 0;
 	private Button doneButton;
 	private TextView activityText;
+	private TextView timeLabel;
 	private EditText activityNameEditText;
-	private Chronometer chronometer;
 	DatabaseHandler db = new DatabaseHandler(this);
+	private RefreshHandler mRedrawHandler = new RefreshHandler();
+		class RefreshHandler extends Handler {
+		    @Override
+		    public void handleMessage(Message msg) {
+		    	ViewActivitiesActivity.this.updateTimer(lastActivity);
+		    }
+
+		    public void sleep(long delayMillis) {
+		      this.removeMessages(0);
+		      sendMessageDelayed(obtainMessage(0), delayMillis);
+		    }
+		  };
+
+	private void updateTimer(long baseMillis){
+		long start = lastActivity;
+	    long millis = System.currentTimeMillis() - start;
+	    int seconds = (int) millis / 1000;
+	    int minutes = seconds / 60;
+	    int hours = minutes / 60;
+	    seconds = seconds % 60;
+
+	    String text = String.format("%d:%02d:%02d", hours, minutes, seconds);
+	    timeLabel.setText(text);
+	    mRedrawHandler.sleep(1000);
+	  }
 
 	@Override
     public void onCreate(Bundle savedInstanceState) {
@@ -51,6 +77,17 @@ public class ViewActivitiesActivity extends LazyCureActivity {
         List<Activity> activities = db.getAllActivities();
         //Reverse the activities order
         Collections.reverse(activities);
+        Log.d("List: " , "Activities size: " + activities.size());
+        if (activities.size() != 0){
+			//Set the latest activity time for timeLabel
+			lastActivity = activities.get(0).getStartTime().getTime();
+			Log.d("Date: " , "lastActivity time is [" + activities.get(0).getStartTime() +"]");
+        }
+		else{
+			lastActivity = System.currentTimeMillis();
+		}
+        Log.d("Date: " , "lastActivity value is [" + lastActivity +"]");
+        //Print out the activities
 		StringBuffer sb = new StringBuffer();
 		for (int i=1;i<activities.size();i++){
 			if (activities.get(i-1).getStartTime() != null){
@@ -70,13 +107,14 @@ public class ViewActivitiesActivity extends LazyCureActivity {
 		}
 		activityText.setMovementMethod(new ScrollingMovementMethod());
 		activityText.setText(sb.toString());
+		updateTimer(lastActivity);
 	}
 
 	private void setUpViews() {
 		doneButton = (Button)findViewById(R.id.done_button);
 		activityText = (TextView)findViewById(R.id.activities_list_text);
 		activityNameEditText = (EditText)findViewById(R.id.input);
-		chronometer = (Chronometer)findViewById(R.id.chronometer);
+		timeLabel = (TextView) this.findViewById(R.id.timeLabel);
 		
 		doneButton.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
@@ -87,7 +125,7 @@ public class ViewActivitiesActivity extends LazyCureActivity {
 		clearInput();
 	}
 	
-	public Date getCuttentDate(){
+	public Date getCurrentDate(){
 		Date date = new Date();
 		return date;
 	}
@@ -95,11 +133,8 @@ public class ViewActivitiesActivity extends LazyCureActivity {
 	private void addActivity() {
 		String activityName = activityNameEditText.getText().toString();
 		if (activityName.length() != 0){
-			Log.d("Insert: " , "Inserting [" + activityName + "] with date: " + getCuttentDate().toString());
-	        db.addActivity(new Activity(activityName, getCuttentDate(), null));
-	        //Reset timer
-	        chronometer.setBase(SystemClock.elapsedRealtime());
-	        chronometer.start();
+			Log.d("Insert: " , "Inserting [" + activityName + "] with date: " + getCurrentDate().toString());
+	        db.addActivity(new Activity(activityName, getCurrentDate(), null));
 		}
 		clearInput();
 		showActivities();

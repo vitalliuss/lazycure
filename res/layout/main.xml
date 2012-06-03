@@ -6,21 +6,12 @@
     android:orientation="vertical"
     android:color="@color/black" >
 
-    <Chronometer
-        android:id="@+id/chronometer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:textColor="@color/black"
-        android:textSize="@dimen/chronometer_textSize" />
-
     <EditText
         android:id="@+id/input"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_below="@+id/chronometer"
+        android:layout_below="@+id/timeLabel"
         android:hint="@string/input_hint" >
 
         <requestFocus />
@@ -53,5 +44,14 @@
         android:maxLines="100"
         android:scrollbars="vertical"
         android:textColor="@color/black" />
+
+    <TextView
+        android:id="@+id/timeLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/black"
+        android:textSize="@dimen/timeLabelTextSize"/>
 
 </RelativeLayout>
