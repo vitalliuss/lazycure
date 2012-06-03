@@ -44,13 +44,8 @@ public class ViewActivitiesActivity extends LazyCureActivity {
 
 	private void updateTimer(long baseMillis){
 		long start = lastActivity;
-	    long millis = System.currentTimeMillis() - start;
-	    int seconds = (int) millis / 1000;
-	    int minutes = seconds / 60;
-	    int hours = minutes / 60;
-	    seconds = seconds % 60;
-
-	    String text = String.format("%d:%02d:%02d", hours, minutes, seconds);
+	    long duration = System.currentTimeMillis() - start;
+	    String text = Time.millisToShortDHMS(duration);
 	    timeLabel.setText(text);
 	    mRedrawHandler.sleep(1000);
 	  }
@@ -70,7 +65,7 @@ public class ViewActivitiesActivity extends LazyCureActivity {
 	}
 
 	private void showActivities() {
-		String prefix = "> ";
+		String prefix = "	";
 		String delimiter = " - ";
 		SimpleDateFormat ft = new SimpleDateFormat ("HH:mm:ss");
 		ft.setTimeZone(TimeZone.getTimeZone("UTC"));
