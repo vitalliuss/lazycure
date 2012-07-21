@@ -3,10 +3,12 @@ package com.github.lazycure;
 import java.util.ArrayList;
 import com.github.lazycure.activities.Activity;
 import android.app.Application;
+import android.content.Context;
 
 public class LazyCureApplication extends Application {
 
 	private ArrayList<Activity> currentActivities;
+	private static Context context;
 	
 	@Override
 	public void onCreate() {
@@ -14,7 +16,12 @@ public class LazyCureApplication extends Application {
 		if (null == currentActivities) {
 			currentActivities = new ArrayList<Activity>();
 		}
+		LazyCureApplication.context = getApplicationContext();
 	}
+
+	public static Context getAppContext() {
+        return LazyCureApplication.context;
+    }
 
 	public void setCurrentActivities(ArrayList<Activity> currentActivities) {
 		this.currentActivities = currentActivities;

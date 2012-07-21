@@ -44,4 +44,11 @@ public class Activity implements Serializable {
 		return name;
 	}
 	
+	public Date getDuration(){
+		Date duration = new Date(0);
+		if (start != null){
+			duration = new Date(getFinishTime().getTime() - getStartTime().getTime());
+		}
+		return duration;
+	}
 }

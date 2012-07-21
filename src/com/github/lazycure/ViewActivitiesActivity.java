@@ -1,12 +1,10 @@
 package com.github.lazycure;
 
-import java.text.SimpleDateFormat;
 import java.util.Collections;
-import java.util.Date;
 import java.util.List;
-import java.util.TimeZone;
 
 import com.github.lazycure.activities.Activity;
+import com.github.lazycure.activities.ActivityManager;
 import com.github.lazycure.db.DatabaseHandler;
 
 import android.content.Context;
@@ -14,7 +12,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.text.method.ScrollingMovementMethod;
-import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
@@ -47,7 +44,7 @@ public class ViewActivitiesActivity extends LazyCureActivity {
 	    long duration = System.currentTimeMillis() - start;
 	    String text = Time.millisToShortDHMS(duration);
 	    timeLabel.setText(text);
-	    mRedrawHandler.sleep(1000);
+	    mRedrawHandler.sleep(Time.ONE_SECOND);
 	  }
 
 	@Override
@@ -65,47 +62,24 @@ public class ViewActivitiesActivity extends LazyCureActivity {
 	}
 
 	private void showActivities() {
-		String prefix = "	";
-		String delimiter = " - ";
-		SimpleDateFormat ft = new SimpleDateFormat ("HH:mm:ss");
-		ft.setTimeZone(TimeZone.getTimeZone("UTC"));
-        List<Activity> activities = db.getAllActivities();
-        Log.d("List: " , "Activities size: " + activities.size());
-        //Update missing time records for all activities
-		StringBuffer sb = new StringBuffer();
-		for (int i=1;i<activities.size();i++){
-			if (activities.get(i-1).getFinishTime() != null){
-				activities.get(i).setStartTime(activities.get(i-1).getFinishTime());
-			}
+		if (ActivityManager.activityListIsEmpty()){
+			ActivityManager.createFirstTestActivity();
 		}
+        List<Activity> activities = db.getAllActivities();
+        OutputManager.UpdateActivitiesWithStartTime(activities);
 		//Reverse the activities order
         Collections.reverse(activities);
-        if (activities.size() != 0){
+		//Print out the activities
+        String activitiesList = OutputManager.FormatActivitiesList(activities);
+		activityText.setMovementMethod(new ScrollingMovementMethod());
+		activityText.setText(activitiesList);
+		if (activities.size() != 0){
 			//Set the latest activity time for timeLabel
 			lastActivity = activities.get(0).getFinishTime().getTime();
-			Log.d("Date: " , "lastActivity finish time is [" + activities.get(0).getFinishTime() +"]");
         }
 		else{
 			lastActivity = System.currentTimeMillis();
 		}
-        Log.d("Date: " , "lastActivity value is [" + lastActivity +"]");
-		//Print out the activities
-		for (Activity t:activities) {
-			sb.append(prefix);
-			sb.append(t.getName().toString());
-			sb.append(delimiter);
-			if (t.getFinishTime() != null && t.getStartTime() != null){
-				Log.d("Date: " , "Activity [" + t.getName().toString() + "]:" +
-						" Start time  " + ft.format(t.getStartTime()) +
-						", Finish time: [" + ft.format(t.getFinishTime()));
-				Date delta = new Date(t.getFinishTime().getTime() - t.getStartTime().getTime());
-				Log.d("Date: " , "Inserting [" + t.getName().toString() + "] with duration: " + ft.format(delta));
-				sb.append(ft.format(delta));
-			}
-			sb.append("\n");
-		}
-		activityText.setMovementMethod(new ScrollingMovementMethod());
-		activityText.setText(sb.toString());
 		updateTimer(lastActivity);
 	}
 
@@ -124,17 +98,9 @@ public class ViewActivitiesActivity extends LazyCureActivity {
 		clearInput();
 	}
 	
-	public Date getCurrentDate(){
-		Date date = new Date();
-		return date;
-	}
-	
 	private void addActivity() {
 		String activityName = activityNameEditText.getText().toString();
-		if (activityName.length() != 0){
-			Log.d("Insert: " , "Inserting [" + activityName + "] with finish date: " + getCurrentDate().toString());
-	        db.addActivity(new Activity(activityName, null, getCurrentDate()));
-		}
+		ActivityManager.addActivity(activityName);
 		clearInput();
 		showActivities();
 	}
@@ -144,5 +110,4 @@ public class ViewActivitiesActivity extends LazyCureActivity {
 		InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
 		imm.hideSoftInputFromWindow(activityNameEditText.getWindowToken(), 0);
 	}
-	
 }
