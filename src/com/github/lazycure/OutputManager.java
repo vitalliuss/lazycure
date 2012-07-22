@@ -1,13 +1,9 @@
 package com.github.lazycure;
 
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.TimeZone;
-
-import android.util.Log;
-
 import com.github.lazycure.activities.Activity;
 
 public class OutputManager {
@@ -49,7 +45,6 @@ public class OutputManager {
 		buffer.append(activity.getName());
 		buffer.append(DELIMITER);
 		Date delta = activity.getDuration();
-		Log.d("Date" , "Inserting [" + activity.getName() + "] with finish time: " + activity.getFinishTime().toString());
 		buffer.append(dateFormat.format(delta));
 		return buffer.toString();
 	}
@@ -66,7 +61,6 @@ public class OutputManager {
 
 	public static int getFinishDayNumber(Activity activity){
 		int dayNumber = activity.getFinishTime().getDay();
-		Log.d("Date", "Day of week number: " + dayNumber);
 		return dayNumber;
 	}
 }

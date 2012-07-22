@@ -13,6 +13,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 public class DatabaseHandler extends SQLiteOpenHelper {
 	
@@ -66,7 +67,19 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.insert(TABLE_ACTIVITIES, null, values);
         db.close(); // Closing database connection
     }
-    
+
+    //Removing activity
+    public void removeActivity(Activity activity){
+    	SQLiteDatabase db = this.getWritableDatabase();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String activityFinishDate = dateFormat.format(activity.getFinishTime());
+
+        String removeQuery = "DELETE FROM " + TABLE_ACTIVITIES + " WHERE " + KEY_FINISH_DATE + " = '" + activityFinishDate + "'";
+        Log.d("DB", "Executing: " + removeQuery);
+        db.execSQL(removeQuery);
+        db.close();
+    }
+
  // Getting All Activities
     public List<Activity> getAllActivities() {
        List<Activity> activityList = new ArrayList<Activity>();

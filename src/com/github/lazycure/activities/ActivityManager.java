@@ -1,8 +1,8 @@
 package com.github.lazycure.activities;
 
+import java.util.List;
 import android.content.Context;
 import android.util.Log;
-
 import com.github.lazycure.LazyCureApplication;
 import com.github.lazycure.OutputManager;
 import com.github.lazycure.Time;
@@ -29,8 +29,28 @@ public class ActivityManager {
 	
 	public static void addActivity(String activityName) {
 		if (activityName.length() != 0){
-			Log.d("Insert" , "Inserting [" + activityName + "] with finish date: " + Time.getCurrentDate().toString());
-	        db.addActivity(new Activity(activityName, null, Time.getCurrentDate()));
+			if (!activityName.equalsIgnoreCase(getLastActivity().getName())){
+				Log.d("Insert" , "Inserting [" + activityName + "] with finish date: " + Time.getCurrentDate().toString());
+		        db.addActivity(new Activity(activityName, null, Time.getCurrentDate()));
+			}
+			else{
+				continueLatestActivity();
+			}
 		}
+	}
+
+	public static void removeActivity(Activity activity){
+		db.removeActivity(activity);
+	}
+
+	public static void continueLatestActivity(){
+		Activity latestActivity = getLastActivity();
+		removeActivity(latestActivity);
+		addActivity(latestActivity.getName());
+	}
+
+	public static Activity getLastActivity(){
+		List<Activity> activities = db.getAllActivities();
+		return activities.get(activities.size()-1);
 	}
 }
