@@ -14,6 +14,7 @@ public class ActivityManager {
 	private static DatabaseHandler db = new DatabaseHandler(context);
 	
 	public static void createFirstTestActivity(){
+		Log.d("Test", "First activity created");
 		db.addActivity(new Activity(OutputManager.TEST_ACTIVITY_NAME, null, Time.getCurrentDate()));
 	}
 	
@@ -29,12 +30,16 @@ public class ActivityManager {
 	
 	public static void addActivity(String activityName) {
 		if (activityName.length() != 0){
-			if (!activityName.equalsIgnoreCase(getLastActivity().getName())){
-				Log.d("Insert" , "Inserting [" + activityName + "] with finish date: " + Time.getCurrentDate().toString());
-		        db.addActivity(new Activity(activityName, null, Time.getCurrentDate()));
+			if (!isFirstActivity()){
+				if (activityName.equalsIgnoreCase(getLastActivity().getName())){
+					continueLatestActivity();
+				}
+				else{
+					db.addActivity(new Activity(activityName, null, Time.getCurrentDate()));
+				}
 			}
 			else{
-				continueLatestActivity();
+		        db.addActivity(new Activity(activityName, null, Time.getCurrentDate()));
 			}
 		}
 	}
@@ -45,12 +50,24 @@ public class ActivityManager {
 
 	public static void continueLatestActivity(){
 		Activity latestActivity = getLastActivity();
-		removeActivity(latestActivity);
-		addActivity(latestActivity.getName());
+		String activityName = latestActivity.getName();
+		if (latestActivity != null){
+			removeActivity(latestActivity);
+		}
+		addActivity(activityName);
 	}
 
 	public static Activity getLastActivity(){
 		List<Activity> activities = db.getAllActivities();
-		return activities.get(activities.size()-1);
+		Activity lastActivity = null;
+		if (activities.size()>0){
+			Log.d("Test", "Activities.size="+activities.size());
+			lastActivity = activities.get(activities.size()-1);
+		}
+		return lastActivity;
+	}
+	
+	public static boolean isFirstActivity(){
+		return (db.getActivitiesCount() == 0);
 	}
 }

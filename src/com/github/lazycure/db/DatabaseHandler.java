@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import com.github.lazycure.Time;
 import com.github.lazycure.activities.Activity;
 
 import android.content.ContentValues;
@@ -62,6 +63,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         values.put(KEY_NAME, activity.getName()); // Activity Name
         values.put(KEY_FINISH_DATE, dateFormat.format(activity.getFinishTime())); // Activity start date
+        Log.d("Insert" , "Inserting [" + activity.getName() + "] with finish date: " + Time.getCurrentDate().toString());
      
         // Inserting Row
         db.insert(TABLE_ACTIVITIES, null, values);
