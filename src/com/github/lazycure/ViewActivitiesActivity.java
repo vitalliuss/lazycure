@@ -8,15 +8,20 @@ import com.github.lazycure.activities.ActivityManager;
 import com.github.lazycure.db.DatabaseHandler;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.text.method.ScrollingMovementMethod;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class ViewActivitiesActivity extends LazyCureActivity {
 
@@ -54,11 +59,36 @@ public class ViewActivitiesActivity extends LazyCureActivity {
         
         setUpViews();
     }
-	
+
 	@Override
 	protected void onResume() {
 		super.onResume();
 		showActivities();
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+	    MenuInflater inflater = getMenuInflater();
+	    inflater.inflate(R.menu.menu, menu);
+	    return true;
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+	    switch (item.getItemId()) {
+	        case R.id.export:
+	        	Toast.makeText(this, "Not implemented yet", Toast.LENGTH_LONG).show();
+	            break;
+	        case R.id.settings:
+	        	Toast.makeText(this, "Not implemented yet", Toast.LENGTH_LONG).show();
+	            break;
+	        case R.id.about:
+	        	Intent intent = new Intent();
+		        intent.setClass(LazyCureApplication.getAppContext(), AboutActivity.class);
+		        startActivity(intent);
+                break;
+	    }
+	    return true;
 	}
 
 	private void showActivities() {
