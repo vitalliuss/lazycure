@@ -77,16 +77,18 @@ public class ViewActivitiesActivity extends LazyCureActivity {
 	public boolean onOptionsItemSelected(MenuItem item) {
 	    switch (item.getItemId()) {
 	        case R.id.export:
-	        	Toast.makeText(this, "Not implemented yet", Toast.LENGTH_LONG).show();
-	            break;
+	        	Intent export = new Intent();
+	        	export.setClass(LazyCureApplication.getAppContext(), ExportActivity.class);
+	        	startActivity(export);
+	        	break;
 	        case R.id.settings:
 	        	Toast.makeText(this, "Not implemented yet", Toast.LENGTH_LONG).show();
 	            break;
 	        case R.id.about:
-	        	Intent intent = new Intent();
-		        intent.setClass(LazyCureApplication.getAppContext(), AboutActivity.class);
-		        startActivity(intent);
-                break;
+	        	Intent about = new Intent();
+	        	about.setClass(LazyCureApplication.getAppContext(), AboutActivity.class);
+	        	startActivity(about);
+	        	break;
 	    }
 	    return true;
 	}

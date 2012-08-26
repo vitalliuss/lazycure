@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:android1="http://schemas.android.com/apk/res/android"
+    xmlns:android2="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/white"
+	android:color="@color/black" >
+
+    <TextView
+        android1:id="@+id/exportInvitation"
+        android1:layout_width="wrap_content"
+        android1:layout_height="wrap_content"
+        android1:layout_alignParentTop="true"
+        android1:layout_centerHorizontal="true"
+        android:textColor="@color/black"
+        android1:text="@string/export_invitation"
+        android1:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <RadioGroup
+        android2:id="@+id/fileType"
+        android2:layout_width="wrap_content"
+        android2:layout_height="wrap_content"
+        android2:layout_alignParentLeft="true"
+        android2:layout_below="@+id/exportInvitation" >
+
+        <RadioButton
+            android2:id="@+id/radio0"
+            android2:layout_width="wrap_content"
+            android2:layout_height="wrap_content"
+            android2:checked="true"
+            android:textColor="@color/black"
+            android2:text="@string/export_timelog" />
+
+        <RadioButton
+            android2:id="@+id/radio1"
+            android2:layout_width="wrap_content"
+            android2:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android2:text="@string/export_Xml" />
+
+        <RadioButton
+            android2:id="@+id/radio2"
+            android2:layout_width="wrap_content"
+            android2:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android2:text="@string/export_plainText" />
+
+    </RadioGroup>
+
+    <Button
+        android2:id="@+id/exportButton"
+        android2:layout_width="wrap_content"
+        android2:layout_height="wrap_content"
+        android2:layout_alignParentBottom="true"
+        android2:layout_alignParentLeft="true"
+        android2:layout_alignParentRight="true"
+        android2:text="@string/export_button" />
+
+    <TextView
+        android2:id="@+id/exportLocation"
+        android2:layout_width="wrap_content"
+        android2:layout_height="wrap_content"
+        android2:layout_alignParentLeft="true"
+        android2:layout_centerVertical="true"
+        android2:gravity="center"
+        android2:text="@string/export_LocationHint"
+        android2:textAppearance="?android:attr/textAppearanceMedium"
+        android2:textColor="@color/black" />
+
+</RelativeLayout>
