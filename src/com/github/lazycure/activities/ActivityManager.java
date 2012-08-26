@@ -30,16 +30,17 @@ public class ActivityManager {
 	
 	public static void addActivity(String activityName) {
 		if (activityName.length() != 0){
+			String trimmed = RemoveTrailingWhitespace(activityName);
 			if (!isFirstActivity()){
-				if (activityName.equalsIgnoreCase(getLastActivity().getName())){
+				if (trimmed.equalsIgnoreCase(getLastActivity().getName())){
 					continueLatestActivity();
 				}
 				else{
-					db.addActivity(new Activity(activityName, null, Time.getCurrentDate()));
+					db.addActivity(new Activity(trimmed, null, Time.getCurrentDate()));
 				}
 			}
 			else{
-		        db.addActivity(new Activity(activityName, null, Time.getCurrentDate()));
+		        db.addActivity(new Activity(trimmed, null, Time.getCurrentDate()));
 			}
 		}
 	}
@@ -69,5 +70,10 @@ public class ActivityManager {
 	
 	public static boolean isFirstActivity(){
 		return (db.getActivitiesCount() == 0);
+	}
+	
+	private static String RemoveTrailingWhitespace(String activity){
+		String trimmed = activity.trim();
+		return trimmed;
 	}
 }
