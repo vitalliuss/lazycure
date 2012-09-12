@@ -22,7 +22,7 @@ public class Time {
 
     /**
      * converts time (in milliseconds) to human-readable format
-     *  "<dd:>hh:mm:ss"
+     *  "<dd>hh:mm:ss"
      */
     public static String millisToShortDHMS(long duration) {
       String res = "";
