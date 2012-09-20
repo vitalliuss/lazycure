@@ -30,7 +30,7 @@ public class ActivityManager {
 	
 	public static void addActivity(String activityName) {
 		if (activityName.length() != 0){
-			String trimmed = RemoveTrailingWhitespace(activityName);
+			String trimmed = activityName.trim();
 			if (!isFirstActivity()){
 				if (trimmed.equalsIgnoreCase(getLastActivity().getName())){
 					continueLatestActivity();
@@ -70,10 +70,5 @@ public class ActivityManager {
 	
 	public static boolean isFirstActivity(){
 		return (db.getActivitiesCount() == 0);
-	}
-	
-	private static String RemoveTrailingWhitespace(String activity){
-		String trimmed = activity.trim();
-		return trimmed;
 	}
 }
