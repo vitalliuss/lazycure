@@ -45,7 +45,7 @@ public class OutputManager {
 		buffer.append(activity.getName());
 		buffer.append(DELIMITER);
 		Date delta = activity.getDuration();
-		buffer.append(dateFormat.format(delta));
+		buffer.append(Time.format(delta));
 		return buffer.toString();
 	}
 

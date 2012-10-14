@@ -59,4 +59,13 @@ public class Time {
 		return dateString;
     }
 
+    /**
+     * Formats the Date object to be displayed as time, as millisToShortDHMS do
+     * @param Date object presenting time, usually duration
+     * @return formatted short string presenting readable time
+     */
+	public static String format(Date dateTime) {
+		return Time.millisToShortDHMS(dateTime.getTime());
+	}
+
 }
