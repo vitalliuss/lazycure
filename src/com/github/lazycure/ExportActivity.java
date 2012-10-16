@@ -38,13 +38,13 @@ public class ExportActivity extends LazyCureActivity {
 		exportButton = (Button)findViewById(R.id.exportButton);
 		exportButton.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
-				ExportTimeLog();
+				exportTimeLog();
 				finish();
 			}
 		});
 	}
 	
-	public void ExportTimeLog(){
+	public void exportTimeLog(){
 		fileType = (RadioGroup)findViewById(R.id.fileType);
 		switch (fileType.getCheckedRadioButtonId()){
 			case R.id.radio0:
@@ -54,22 +54,22 @@ public class ExportActivity extends LazyCureActivity {
 				Toast.makeText(this, "Not implemented yet", Toast.LENGTH_LONG).show();
 	            break;
 			case R.id.radio2:
-				ExportDBasPlainText();
+				exportDBasPlainText();
 				break;
 		}
 	}
 	
-	public void ExportDBasPlainText(){
+	public void exportDBasPlainText(){
 		String activitiesList = EMPTY_STRING;
-		String today = Time.GetYYYYMMDD(Time.getCurrentDate());
+		String today = Time.getYYYYMMDD(Time.getCurrentDate());
 		String filename = today + TXT_EXTENSION;
 		List<Activity> activities = db.getAllActivities();
-        OutputManager.UpdateActivitiesWithStartTime(activities);
+        OutputManager.updateActivitiesWithStartTime(activities);
 		//Reverse the activities order
         Collections.reverse(activities);
 		//Print out the activities
-        activitiesList = OutputManager.FormatActivitiesList(activities);
-		if (Writer.WriteFile(TIME_LOGS_DIRECTORY_NAME, filename, activitiesList)){
+        activitiesList = OutputManager.formatActivitiesList(activities);
+		if (Writer.writeFile(TIME_LOGS_DIRECTORY_NAME, filename, activitiesList)){
 			Toast.makeText(context, "Saved as Plain Text", Toast.LENGTH_SHORT).show();
 		}
 		else{

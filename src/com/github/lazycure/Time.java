@@ -41,7 +41,7 @@ public class Time {
       return res;
     }
     
-    public static String GetYYYYMMDD(Date date){
+    public static String getYYYYMMDD(Date date){
     	SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
     	String dateString = dateFormat.format(date);
 		return dateString;
@@ -53,7 +53,7 @@ public class Time {
      * @return String date in ISO 8601 format http://www.iso.org/iso/en/prods-services/popstds/datesandtime.html
      */
     
-    public static String GetYYYYMMddHHmmss(Date date){
+    public static String getYYYYMMddHHmmss(Date date){
     	SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     	String dateString = dateFormat.format(date);
 		return dateString;

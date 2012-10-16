@@ -66,7 +66,7 @@ public class Writer {
 	}
 
 	
-	public static boolean WriteFile(String directoryName, String filename, String data){
+	public static boolean writeFile(String directoryName, String filename, String data){
 		boolean operationStatus = false;
 		File root = new File(Environment.getExternalStorageDirectory(), directoryName);
 		if (!root.exists()) {

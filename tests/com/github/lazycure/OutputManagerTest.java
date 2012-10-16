@@ -31,7 +31,7 @@ public class OutputManagerTest extends TestCase {
 		buffer.append(DELIMITER);
 		buffer.append(DAY);
 		assertEquals(buffer.toString(),
-				OutputManager.FormatActivityString(activity));
+				OutputManager.formatActivityString(activity));
 	}
 
 	@Test
@@ -44,7 +44,7 @@ public class OutputManagerTest extends TestCase {
 		buffer.append(DELIMITER);
 		buffer.append(HOUR);
 		assertEquals(buffer.toString(),
-				OutputManager.FormatActivityString(activity));
+				OutputManager.formatActivityString(activity));
 	}
 
 	@Test
@@ -57,7 +57,7 @@ public class OutputManagerTest extends TestCase {
 		buffer.append(DELIMITER);
 		buffer.append(MINUTE);
 		assertEquals(buffer.toString(),
-				OutputManager.FormatActivityString(activity));
+				OutputManager.formatActivityString(activity));
 	}
 
 	@Test
@@ -70,7 +70,7 @@ public class OutputManagerTest extends TestCase {
 		buffer.append(DELIMITER);
 		buffer.append(SECOND);
 		assertEquals(buffer.toString(),
-				OutputManager.FormatActivityString(activity));
+				OutputManager.formatActivityString(activity));
 	}
 
 }

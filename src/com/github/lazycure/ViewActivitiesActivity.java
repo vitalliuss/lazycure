@@ -98,11 +98,11 @@ public class ViewActivitiesActivity extends LazyCureActivity {
 			ActivityManager.createFirstTestActivity();
 		}
         List<Activity> activities = db.getAllActivities();
-        OutputManager.UpdateActivitiesWithStartTime(activities);
+        OutputManager.updateActivitiesWithStartTime(activities);
 		//Reverse the activities order
         Collections.reverse(activities);
 		//Print out the activities
-        String activitiesList = OutputManager.FormatActivitiesList(activities);
+        String activitiesList = OutputManager.formatActivitiesList(activities);
 		activityText.setMovementMethod(new ScrollingMovementMethod());
 		activityText.setText(activitiesList);
 		if (activities.size() != 0){

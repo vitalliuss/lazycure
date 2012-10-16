@@ -16,19 +16,19 @@ public class OutputManager {
 	public final static SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
 	public static int lastDayNumber;
 	
-	public static String FormatActivitiesList(List<Activity> activities){
+	public static String formatActivitiesList(List<Activity> activities){
 		StringBuffer buffer = new StringBuffer();
 		String activitiesList = EMPTY_STRING;
 		dateFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
 
 		for (int i=0; i<activities.size(); i++) {
-			buffer.append(FormatActivityString(activities.get(i)));
+			buffer.append(formatActivityString(activities.get(i)));
 			buffer.append("\n");
 			if (i<activities.size()-1){
 				if (getFinishDayNumber(activities.get(i)) != getFinishDayNumber(activities.get(i+1))){
 					buffer.append(ACTIVITY_PREFIX + DAY_SEPARATION_LINE);
 					Date previousActivityDate = activities.get(i).getFinishTime();
-					buffer.append(Time.GetYYYYMMDD(previousActivityDate));
+					buffer.append(Time.getYYYYMMDD(previousActivityDate));
 					buffer.append(DAY_SEPARATION_LINE);
 					buffer.append("\n");
 				}
@@ -38,7 +38,7 @@ public class OutputManager {
 		return activitiesList;
 	}
 
-	public static String FormatActivityString(Activity activity){
+	public static String formatActivityString(Activity activity){
 		dateFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
 		StringBuffer buffer = new StringBuffer();
 		buffer.append(ACTIVITY_PREFIX);
@@ -49,7 +49,7 @@ public class OutputManager {
 		return buffer.toString();
 	}
 
-	public static List<Activity> UpdateActivitiesWithStartTime(List<Activity> activities){
+	public static List<Activity> updateActivitiesWithStartTime(List<Activity> activities){
         //Update missing start time records for all activities
 		for (int i=1;i<activities.size();i++){
 			if (activities.get(i-1).getFinishTime() != null){
