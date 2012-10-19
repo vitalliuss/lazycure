@@ -22,7 +22,7 @@ public class Time {
 
     /**
      * converts time (in milliseconds) to human-readable format
-     *  "<dd>hh:mm:ss"
+     *  "<dd>H:mm:ss"
      */
     public static String millisToShortDHMS(long duration) {
       String res = "";
@@ -34,9 +34,9 @@ public class Time {
       int hours = (int) (duration % HOURS);
       int days = (int) (duration / HOURS);
       if (days == 0) {
-        res = String.format("%02d:%02d:%02d", hours, minutes, seconds);
+        res = String.format("%d:%02d:%02d", hours, minutes, seconds);
       } else {
-        res = String.format("%dd%02d:%02d:%02d", days, hours, minutes, seconds);
+        res = String.format("%dd%d:%02d:%02d", days, hours, minutes, seconds);
       }
       return res;
     }
@@ -65,6 +65,8 @@ public class Time {
      * @return formatted short string presenting readable time
      */
 	public static String format(Date dateTime) {
+		if(dateTime==null)
+			dateTime=new Date(0);
 		return Time.millisToShortDHMS(dateTime.getTime());
 	}
 

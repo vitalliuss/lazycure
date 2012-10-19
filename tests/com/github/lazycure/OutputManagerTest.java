@@ -15,10 +15,10 @@ public class OutputManagerTest extends TestCase {
 	private Date minuteAfter = new Date(2000, 1, 1, 1, 01, 00);
 	private Date hourAfter = new Date(2000, 1, 1, 2, 00, 00);
 	private Date dayAfter = new Date(2000, 1, 2, 1, 00, 00);
-	private String SECOND = "00:00:01";
-	private String MINUTE = "00:01:00";
-	private String HOUR = "01:00:00";
-	private String DAY = "1d00:00:00";
+	private String SECOND = "0:00:01";
+	private String MINUTE = "0:01:00";
+	private String HOUR = "1:00:00";
+	private String DAY = "1d0:00:00";
 	private String DELIMITER = OutputManager.DELIMITER;
 	private String ACTIVITY_PREFIX = OutputManager.ACTIVITY_PREFIX;
 
