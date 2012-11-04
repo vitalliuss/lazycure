@@ -22,15 +22,16 @@ public final class R {
         public static final int icon_about=0x7f020001;
         public static final int icon_export=0x7f020002;
         public static final int icon_settings=0x7f020003;
+        public static final int icon_timelog=0x7f020004;
     }
     public static final class id {
-        public static final int about=0x7f090010;
+        public static final int about=0x7f090011;
         public static final int aboutText=0x7f090001;
         public static final int activitiesTable=0x7f09000d;
         public static final int activities_title=0x7f09000c;
         public static final int backButton=0x7f090000;
         public static final int done_button=0x7f09000b;
-        public static final int export=0x7f09000e;
+        public static final int export=0x7f09000f;
         public static final int exportButton=0x7f090007;
         public static final int exportInvitation=0x7f090002;
         public static final int exportLocation=0x7f090008;
@@ -39,13 +40,16 @@ public final class R {
         public static final int radio0=0x7f090004;
         public static final int radio1=0x7f090005;
         public static final int radio2=0x7f090006;
-        public static final int settings=0x7f09000f;
+        public static final int settings=0x7f090010;
         public static final int timeLabel=0x7f09000a;
+        public static final int timeLogTable=0x7f09000e;
+        public static final int timeLogView=0x7f090012;
     }
     public static final class layout {
         public static final int about=0x7f030000;
         public static final int export=0x7f030001;
         public static final int main=0x7f030002;
+        public static final int timelog=0x7f030003;
     }
     public static final class menu {
         public static final int menu=0x7f080000;
@@ -58,14 +62,15 @@ public final class R {
         public static final int app_name=0x7f070000;
         public static final int backButton_text=0x7f070003;
         public static final int doneButton_text=0x7f070002;
-        public static final int export_LocationHint=0x7f07000c;
-        public static final int export_Xml=0x7f070009;
-        public static final int export_button=0x7f07000b;
+        public static final int export_LocationHint=0x7f07000d;
+        public static final int export_Xml=0x7f07000a;
+        public static final int export_button=0x7f07000c;
         public static final int export_invitation=0x7f070006;
-        public static final int export_plainText=0x7f07000a;
-        public static final int export_timelog=0x7f070008;
+        public static final int export_plainText=0x7f07000b;
+        public static final int export_timelog=0x7f070009;
         public static final int input_hint=0x7f070004;
         public static final int title_about=0x7f070005;
         public static final int title_export=0x7f070007;
+        public static final int title_timelog=0x7f070008;
     }
 }

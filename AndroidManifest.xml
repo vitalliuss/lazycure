@@ -18,5 +18,6 @@
         </activity>
         <activity android:name=".AboutActivity" android:label="@string/title_about" />
         <activity android:name=".ExportActivity" android:label="@string/title_export" />
+        <activity android:name=".TimeLogActivity" android:label="@string/title_timelog" />
     </application>
 </manifest>

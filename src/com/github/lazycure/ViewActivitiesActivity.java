@@ -95,6 +95,11 @@ public class ViewActivitiesActivity extends LazyCureActivity {
 	        	about.setClass(LazyCureApplication.getAppContext(), AboutActivity.class);
 	        	startActivity(about);
 	        	break;
+	        case R.id.timeLogView:
+	        	Intent timeLogView = new Intent();
+	        	timeLogView.setClass(LazyCureApplication.getAppContext(), TimeLogActivity.class);
+	        	startActivity(timeLogView);
+	        	break;
 	    }
 	    return true;
 	}
