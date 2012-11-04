@@ -3,6 +3,7 @@ package com.github.lazycure.ui;
 import java.util.List;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -105,6 +106,7 @@ public class ActivitiesTableManager {
 	public TextView createTextViewCell(String content){
 		TextView view = createCell();
 		view.setText(content);
+		view.setTextColor(Color.BLACK);
 		return view;
 	}
 
