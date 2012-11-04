@@ -1,6 +1,8 @@
 package com.github.lazycure;
 
 
+import java.util.Date;
+
 import org.junit.Test;
 
 import junit.framework.TestCase;
@@ -9,22 +11,26 @@ public class TimeTest extends TestCase {
 
 	@Test
 	public void testMillisToShortDHMSZero() {
-		assertEquals("0:00:00", Time.millisToShortDHMS(0));
+		assertEquals("0:00:00", Time.formatWithDay(0));
 	}
 	@Test
 	public void testMillisToShortDHMSSimple() {
-		assertEquals("1:01:01", Time.millisToShortDHMS(1000+1000*60+1000*60*60));
+		assertEquals("1:01:01", Time.formatWithDay(1000+1000*60+1000*60*60));
 	}
 	@Test
 	public void testMillisToShortDHMSMaxDay() {
-		assertEquals("23:59:59", Time.millisToShortDHMS(59*1000+59*1000*60+23*1000*60*60));
+		assertEquals("23:59:59", Time.formatWithDay(59*1000+59*1000*60+23*1000*60*60));
 	}
 	@Test
-	public void testMillisToShortDHMSOneDay() {
-		assertEquals("1d0:00:00", Time.millisToShortDHMS(60*1000+59*1000*60+23*1000*60*60));
+	public void testFormatWithDay() {
+		assertEquals("1d0:00:00", Time.formatWithDay(new Date(24*1000*60*60)));
 	}
 	@Test
 	public void testFormatWithNull() {
 		assertEquals("0:00:00", Time.format(null));
+	}
+	@Test
+	public void testFormatIgnoresDay() {
+		assertEquals("0:00:01", Time.format(new Date(1*1000+24*1000*60*60)));
 	}
 }

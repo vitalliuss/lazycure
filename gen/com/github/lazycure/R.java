@@ -26,7 +26,7 @@ public final class R {
     public static final class id {
         public static final int about=0x7f090010;
         public static final int aboutText=0x7f090001;
-        public static final int activities_list_text=0x7f09000d;
+        public static final int activitiesTable=0x7f09000d;
         public static final int activities_title=0x7f09000c;
         public static final int backButton=0x7f090000;
         public static final int done_button=0x7f09000b;

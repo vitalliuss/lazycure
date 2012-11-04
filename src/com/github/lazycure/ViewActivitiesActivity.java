@@ -6,13 +6,13 @@ import java.util.List;
 import com.github.lazycure.activities.Activity;
 import com.github.lazycure.activities.ActivityManager;
 import com.github.lazycure.db.DatabaseHandler;
+import com.github.lazycure.ui.ActivitiesTableManager;
 
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.text.method.ScrollingMovementMethod;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -20,17 +20,23 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TableLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
+/*
+ * Presentation layer of the main view
+ */
 public class ViewActivitiesActivity extends LazyCureActivity {
 
 	private long lastActivity = 0;
 	private Button doneButton;
-	private TextView activityText;
 	private TextView timeLabel;
 	private EditText activityNameEditText;
 	DatabaseHandler db = new DatabaseHandler(this);
+	private ActivitiesTableManager activitiesTableManager = new ActivitiesTableManager(this);
+	
 	private RefreshHandler mRedrawHandler = new RefreshHandler();
 		class RefreshHandler extends Handler {
 		    @Override
@@ -47,7 +53,7 @@ public class ViewActivitiesActivity extends LazyCureActivity {
 	private void updateTimer(long baseMillis){
 		long start = lastActivity;
 	    long duration = System.currentTimeMillis() - start;
-	    String text = Time.millisToShortDHMS(duration);
+	    String text = Time.formatWithDay(duration);
 	    timeLabel.setText(text);
 	    mRedrawHandler.sleep(Time.ONE_SECOND);
 	  }
@@ -102,9 +108,7 @@ public class ViewActivitiesActivity extends LazyCureActivity {
 		//Reverse the activities order
         Collections.reverse(activities);
 		//Print out the activities
-        String activitiesList = OutputManager.formatActivitiesList(activities);
-		activityText.setMovementMethod(new ScrollingMovementMethod());
-		activityText.setText(activitiesList);
+		activitiesTableManager.showTable(activities);
 		if (activities.size() != 0){
 			//Set the latest activity time for timeLabel
 			lastActivity = activities.get(0).getFinishTime().getTime();
@@ -114,10 +118,10 @@ public class ViewActivitiesActivity extends LazyCureActivity {
 		}
 		updateTimer(lastActivity);
 	}
-
+	
 	private void setUpViews() {
 		doneButton = (Button)findViewById(R.id.done_button);
-		activityText = (TextView)findViewById(R.id.activities_list_text);
+		activitiesTableManager.setTable((TableLayout) this.findViewById(R.id.activitiesTable));
 		activityNameEditText = (EditText)findViewById(R.id.input);
 		timeLabel = (TextView) this.findViewById(R.id.timeLabel);
 		

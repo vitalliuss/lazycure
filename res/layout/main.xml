@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="@color/white"
     android:orientation="vertical"
+    tools:context=".ViewActivitiesActivity"
     android:color="@color/black" >
 
     <EditText
@@ -33,18 +35,7 @@
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/done_button"
         android:text="@string/activities" />
-
-    <TextView
-        android:id="@+id/activities_list_text"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/activities_title"
-        android:maxLines="100"
-        android:scrollbars="vertical"
-        android:textColor="@color/black" />
-
+
     <TextView
         android:id="@+id/timeLabel"
         android:layout_width="wrap_content"
@@ -53,5 +44,19 @@
         android:layout_centerHorizontal="true"
         android:textColor="@color/black"
         android:textSize="@dimen/timeLabelTextSize"/>
-
+	<ScrollView
+		android:layout_width="fill_parent"
+		android:layout_height="fill_parent"
+		android:scrollbars="none"
+		android:layout_below="@+id/activities_title" >
+	    <LinearLayout
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:orientation="vertical" >
+		    <TableLayout
+		        android:id="@+id/activitiesTable"
+		        android:layout_width="fill_parent"
+		        android:layout_height="fill_parent" />
+		</LinearLayout>
+	</ScrollView>
 </RelativeLayout>
