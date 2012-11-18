@@ -12,7 +12,7 @@ public class OutputManager {
 	
 	public final static String EMPTY_STRING = "";
 	public final static String ACTIVITY_PREFIX = "	";
-	public final static String DELIMITER = " - ";
+	public final static String DELIMITER = " ";
 	public final static String TEST_ACTIVITY_NAME = "test";
 	public final static String DAY_SEPARATION_LINE = "=====";
 	public static int lastDayNumber;
@@ -36,11 +36,13 @@ public class OutputManager {
 
 	public static String formatActivityString(Activity activity){
 		StringBuffer buffer = new StringBuffer();
-		buffer.append(ACTIVITY_PREFIX);
+		buffer.append(Time.formatWithDefaultTimeZone(activity.getStartTime()));
+		buffer.append(DELIMITER);
 		buffer.append(activity.getName());
 		buffer.append(DELIMITER);
-		Date delta = activity.getDuration();
-		buffer.append(Time.formatWithDay(delta));
+		buffer.append(Time.formatWithDay(activity.getDuration()));
+		buffer.append(DELIMITER);
+		buffer.append(Time.formatWithDefaultTimeZone(activity.getFinishTime()));
 		return buffer.toString();
 	}
 
