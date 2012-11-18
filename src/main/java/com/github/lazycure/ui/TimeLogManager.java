@@ -32,10 +32,41 @@ public class TimeLogManager extends ActivitiesTableManager {
 	public void showTable(List<Activity> activities) {
 		if (this.timeLogTable != null) {
 			this.timeLogTable.removeAllViews();
+			this.buildHeader();
 			for (int i = 0; i < activities.size(); i++) {
 				showActivity(activities.get(i));
 			}
 		}
+	}
+
+	/**
+	 * Create first row with columns names
+	 */
+	public void buildHeader() {
+		String start = "Start";
+		String name = "Name";
+		String duration = "Duration";
+		String finish = "Finish";
+
+		TableRow tr = new TableRow(context);
+		tr.setLayoutParams(new LayoutParams(LayoutParams.FILL_PARENT,
+				LayoutParams.WRAP_CONTENT));
+
+		// create header cells
+		TextView labelStart = createTextViewCell(start);
+		TextView labelName = createTextViewCell(name);
+		TextView labelDuration = createTextViewCell(duration);
+		TextView labelEnd = createTextViewCell(finish);
+
+		// add header to the row
+		tr.addView(labelStart);
+		tr.addView(labelName);
+		tr.addView(labelDuration);
+		tr.addView(labelEnd);
+
+		this.timeLogTable.addView(tr, new TableLayout.LayoutParams(
+				LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT));
+
 	}
 
 	/**
