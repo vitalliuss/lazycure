@@ -79,6 +79,22 @@ public class Time {
 	}
 
 	/**
+	 * Formats the Date object to be displayed as time in H:mm:ss in device time zone
+	 * @param Date object presenting time, f.e. activity start or end
+	 * @return formatted short string presenting readable time in user's time zone
+	 */
+	public static String formatWithDefaultTimeZone(Date dateTime) {
+		SimpleDateFormat dateFormat = new SimpleDateFormat("H:mm:ss");
+		dateFormat.setTimeZone(TimeZone.getDefault());
+		String output = "0:00:00";
+		if (dateTime != null) {
+			output = dateFormat.format(dateTime);
+		}
+
+		return output;
+	}
+
+	/**
 	 * Formats duration to be displayed as time in H:mm:ss format
 	 * @param milliseconds in milliseconds
 	 * @return formatted short string presenting readable time

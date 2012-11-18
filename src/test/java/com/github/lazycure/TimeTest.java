@@ -35,4 +35,8 @@ public class TimeTest extends TestCase {
 	public void testFormatIgnoresDay() {
 		assertEquals("0:00:01", Time.format(new Date(1*1000+24*1000*60*60)));
 	}
+	@Test
+	public void testTimeZoneWorkWithNull() {
+		assertEquals("0:00:00", Time.formatWithDefaultTimeZone(null));
+	}
 }

@@ -88,7 +88,7 @@ public class ActivitiesTableManager {
 			LayoutParams.WRAP_CONTENT));
 		
 		// create activities properties cells
-		TextView activityStart = createTextViewCell(Time.format(activity.getStartTime()));
+		TextView activityStart = createTextViewCell(Time.formatWithDefaultTimeZone(activity.getStartTime()));
 		TextView activityName = createTextViewCell(activity.getName());
 		TextView activityDuration = createTextViewCell(Time.formatWithDay(activity.getDuration()));
 		

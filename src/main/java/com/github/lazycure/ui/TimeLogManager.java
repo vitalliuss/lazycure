@@ -64,12 +64,12 @@ public class TimeLogManager extends ActivitiesTableManager {
 				LayoutParams.WRAP_CONTENT));
 
 		// create activities properties cells
-		TextView activityStart = createTextViewCell(Time.format(activity
+		TextView activityStart = createTextViewCell(Time.formatWithDefaultTimeZone(activity
 				.getStartTime()));
 		TextView activityName = createTextViewCell(activity.getName());
 		TextView activityDuration = createTextViewCell(Time
 				.formatWithDay(activity.getDuration()));
-		TextView activityEnd = createTextViewCell(Time.format(activity
+		TextView activityEnd = createTextViewCell(Time.formatWithDefaultTimeZone(activity
 				.getFinishTime()));
 
 		// add activity properties views to the row
