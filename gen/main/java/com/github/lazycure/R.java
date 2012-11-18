@@ -63,7 +63,7 @@ public final class R {
         public static final int backButton_text=0x7f070003;
         public static final int doneButton_text=0x7f070002;
         public static final int export_LocationHint=0x7f07000d;
-        public static final int export_Xml=0x7f07000a;
+        public static final int export_Xls=0x7f07000a;
         public static final int export_button=0x7f07000c;
         public static final int export_invitation=0x7f070007;
         public static final int export_plainText=0x7f07000b;

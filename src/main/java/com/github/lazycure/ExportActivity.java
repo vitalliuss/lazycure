@@ -24,7 +24,7 @@ public class ExportActivity extends LazyCureActivity {
 	private final String APP_DIRECTORY_NAME = "LazyCure";
 	private final String TIME_LOGS_DIRECTORY_NAME = APP_DIRECTORY_NAME + "/TimeLogs";
 	private final String TXT_EXTENSION = ".txt";
-	private final String XML_EXTENSION = ".xml";
+	private final String XLS_EXTENSION = ".xls";
 	private final String TIMELOG_EXTENSION = ".timelog";
 	DatabaseHandler db = new DatabaseHandler(this);
 	
@@ -53,7 +53,7 @@ public class ExportActivity extends LazyCureActivity {
 				Toast.makeText(this, "Not implemented yet", Toast.LENGTH_LONG).show();
 	            break;
 			case R.id.radio1:
-				Toast.makeText(this, "Not implemented yet", Toast.LENGTH_LONG).show();
+				exportTimeLogAsXLS();
 	            break;
 			case R.id.radio2:
 				exportDBasPlainText();
@@ -77,6 +77,22 @@ public class ExportActivity extends LazyCureActivity {
 		else{
 			Toast.makeText(context, "Cannot save the file", Toast.LENGTH_SHORT).show();
 		}
+	}
+	
+	public void exportTimeLogAsXLS() {
+		String today = Time.getYYYYMMDD(Time.getCurrentDate());
+		String filename = today + XLS_EXTENSION;
+		List<Activity> activities = db.getAllActivities();
+		OutputManager.updateActivitiesWithStartTime(activities);
+		//Reverse the activities order
+        Collections.reverse(activities);
+        if (Writer.writeActivitiesInXLS(TIME_LOGS_DIRECTORY_NAME, filename, activities)){
+			Toast.makeText(context, "Saved as XLS file", Toast.LENGTH_SHORT).show();
+		}
+		else{
+			Toast.makeText(context, "Cannot save the file", Toast.LENGTH_SHORT).show();
+		}
+		Writer.writeActivitiesInXLS(TIME_LOGS_DIRECTORY_NAME, filename, activities);
 	}
 
 }

@@ -10,7 +10,7 @@
     <string name="export_invitation">Please select file type:</string>
     <string name="title_export">Export activities</string>
     <string name="export_timelog">TimeLog</string>
-    <string name="export_Xml">XML</string>
+    <string name="export_Xls">XLS</string>
     <string name="export_plainText">Plaint text (.txt)</string>
     <string name="export_button">Export</string>
     <string name="export_LocationHint">You can find timelogs on your SD card in LazyCure/TimeLogs folder</string>
