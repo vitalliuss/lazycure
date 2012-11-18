@@ -39,4 +39,19 @@ public class TimeTest extends TestCase {
 	public void testTimeZoneWorkWithNull() {
 		assertEquals("0:00:00", Time.formatWithDefaultTimeZone(null));
 	}
+	@Test
+	public void testFormatAndRound() {
+		assertEquals("0:15", Time.formatAndRound(new Date(29*1000+15*1000*60)));
+		assertEquals("0:16", Time.formatAndRound(new Date(31*1000+15*1000*60)));
+		assertEquals("1:00", Time.formatAndRound(new Date(59*1000+59*1000*60)));
+	}
+	@Test
+	public void testFormatAndRoundWithDefaultTimeZoneWorkWithNull() {
+		assertEquals("0:00", Time.formatAndRoundWithDefaultTimeZone(null));
+	}
+	@Test
+	public void testFormatAndRoundWithDay() {
+		assertEquals("1d0:00", Time.formatAndRoundWithDay(59*1000+59*1000*60+23*1000*60*60));
+		assertEquals("1:01", Time.formatAndRoundWithDay(1000+1000*60+1000*60*60));
+	}
 }
