@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">LazyCure 0.4</string>
+    <string name="app_name">LazyCure 0.5</string>
     <string name="activities">Activities:</string>
     <string name="doneButton_text">Done!</string>
     <string name="backButton_text">Back</string>

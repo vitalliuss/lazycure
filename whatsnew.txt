@@ -1,3 +1,12 @@
+LazyCure 0.5:
+
+ * Export activity in plain text (.txt) or Microsoft Excel spreadsheet (.xls)
+ * Time Log view shows full activity information (start time, name, duration, finish time)
+ * Menu for easy navigation between screens
+ * Main screen shows start time for each activity
+ * Prolongation feature - when you track together two activities with same name LazyCure will calculate total time
+ * Activities grouped by day in the main view
+
 LazyCure 0.4:
  * user can create an activity
  * user can see a list of latest 100 activities with names and durations
