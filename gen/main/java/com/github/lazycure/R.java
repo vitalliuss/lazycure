@@ -40,10 +40,9 @@ public final class R {
         public static final int radio0=0x7f090004;
         public static final int radio1=0x7f090005;
         public static final int radio2=0x7f090006;
-        public static final int settings=0x7f090010;
         public static final int timeLabel=0x7f09000a;
         public static final int timeLogTable=0x7f09000e;
-        public static final int timeLogView=0x7f090012;
+        public static final int timeLogView=0x7f090010;
     }
     public static final class layout {
         public static final int about=0x7f030000;

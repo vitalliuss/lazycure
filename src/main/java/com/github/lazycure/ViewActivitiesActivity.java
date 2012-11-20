@@ -89,18 +89,15 @@ public class ViewActivitiesActivity extends LazyCureActivity {
 	        	export.setClass(LazyCureApplication.getAppContext(), ExportActivity.class);
 	        	startActivity(export);
 	        	break;
-	        case R.id.settings:
-	        	Toast.makeText(this, "Not implemented yet", Toast.LENGTH_LONG).show();
-	            break;
-	        case R.id.about:
-	        	Intent about = new Intent();
-	        	about.setClass(LazyCureApplication.getAppContext(), AboutActivity.class);
-	        	startActivity(about);
-	        	break;
 	        case R.id.timeLogView:
 	        	Intent timeLogView = new Intent();
 	        	timeLogView.setClass(LazyCureApplication.getAppContext(), TimeLogActivity.class);
 	        	startActivity(timeLogView);
+	        	break;
+	        case R.id.about:
+	        	Intent about = new Intent();
+	        	about.setClass(LazyCureApplication.getAppContext(), AboutActivity.class);
+	        	startActivity(about);
 	        	break;
 	    }
 	    return true;
