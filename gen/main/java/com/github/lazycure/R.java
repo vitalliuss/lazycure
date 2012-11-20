@@ -25,24 +25,23 @@ public final class R {
         public static final int icon_timelog=0x7f020004;
     }
     public static final class id {
-        public static final int about=0x7f090011;
+        public static final int about=0x7f090010;
         public static final int aboutText=0x7f090001;
-        public static final int activitiesTable=0x7f09000d;
-        public static final int activities_title=0x7f09000c;
+        public static final int activitiesTable=0x7f09000c;
+        public static final int activities_title=0x7f09000b;
         public static final int backButton=0x7f090000;
-        public static final int done_button=0x7f09000b;
-        public static final int export=0x7f09000f;
-        public static final int exportButton=0x7f090007;
+        public static final int done_button=0x7f09000a;
+        public static final int export=0x7f09000e;
+        public static final int exportButton=0x7f090006;
         public static final int exportInvitation=0x7f090002;
-        public static final int exportLocation=0x7f090008;
+        public static final int exportLocation=0x7f090007;
         public static final int fileType=0x7f090003;
-        public static final int input=0x7f090009;
+        public static final int input=0x7f090008;
         public static final int radio0=0x7f090004;
         public static final int radio1=0x7f090005;
-        public static final int radio2=0x7f090006;
-        public static final int timeLabel=0x7f09000a;
-        public static final int timeLogTable=0x7f09000e;
-        public static final int timeLogView=0x7f090010;
+        public static final int timeLabel=0x7f090009;
+        public static final int timeLogTable=0x7f09000d;
+        public static final int timeLogView=0x7f09000f;
     }
     public static final class layout {
         public static final int about=0x7f030000;

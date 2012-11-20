@@ -50,12 +50,9 @@ public class ExportActivity extends LazyCureActivity {
 		fileType = (RadioGroup)findViewById(R.id.fileType);
 		switch (fileType.getCheckedRadioButtonId()){
 			case R.id.radio0:
-				Toast.makeText(this, "Not implemented yet", Toast.LENGTH_LONG).show();
-	            break;
-			case R.id.radio1:
 				exportTimeLogAsXLS();
 	            break;
-			case R.id.radio2:
+			case R.id.radio1:
 				exportDBasPlainText();
 				break;
 		}

@@ -5,7 +5,7 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="@color/white"
-	android:color="@color/black" >
+    android:color="@color/black" >
 
     <TextView
         android1:id="@+id/exportInvitation"
@@ -16,38 +16,30 @@
         android:textColor="@color/black"
         android1:text="@string/export_invitation"
         android1:textAppearance="?android:attr/textAppearanceMedium" />
-
+
     <RadioGroup
         android2:id="@+id/fileType"
         android2:layout_width="wrap_content"
         android2:layout_height="wrap_content"
         android2:layout_alignParentLeft="true"
         android2:layout_below="@+id/exportInvitation" >
-
+
         <RadioButton
             android2:id="@+id/radio0"
             android2:layout_width="wrap_content"
             android2:layout_height="wrap_content"
-            android2:checked="true"
             android:textColor="@color/black"
-            android2:text="@string/export_timelog" />
-
+            android2:checked="true"
+            android2:text="@string/export_Xls" />
+
         <RadioButton
             android2:id="@+id/radio1"
             android2:layout_width="wrap_content"
             android2:layout_height="wrap_content"
             android:textColor="@color/black"
-            android2:text="@string/export_Xls" />
-
-        <RadioButton
-            android2:id="@+id/radio2"
-            android2:layout_width="wrap_content"
-            android2:layout_height="wrap_content"
-            android:textColor="@color/black"
             android2:text="@string/export_plainText" />
-
     </RadioGroup>
-
+
     <Button
         android2:id="@+id/exportButton"
         android2:layout_width="wrap_content"
@@ -56,7 +48,7 @@
         android2:layout_alignParentLeft="true"
         android2:layout_alignParentRight="true"
         android2:text="@string/export_button" />
-
+
     <TextView
         android2:id="@+id/exportLocation"
         android2:layout_width="wrap_content"
