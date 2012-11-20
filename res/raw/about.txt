@@ -1,11 +1,9 @@
-What is LazyCure?
-=================
+<h2>What is LazyCure?</h2>
 
 LazyCure - is a time tracking software, a convenient tool for easy time logging, time analysis, personal development, calculation and improving working time usage efficiency.
-This is a mobile version of the desktop application LazyCure http://lazycure.com/
+This is a mobile version of the desktop application <a href="http://lazycure.com/"> LazyCure</a>.
 
-Found bugs? Have questions?
-===========================
+<h2>Found bugs? Have questions?</h2>
 
-If you've seen something wrong, please report issues at https://github.com/vitalliuss/lazycure/issues
-Have questions? Feel free to ask to vitalliuss@gmail.com
+If you've seen something wrong, please report issues at <a href="https://github.com/vitalliuss/lazycure/issues">GitHub page</a>.
+Have questions? Feel free to ask to  <a href="mailto:vitalliuss@gmail.com?Subject=LazyCure%20on%20Android">vitalliuss@gmail.com</a>.
