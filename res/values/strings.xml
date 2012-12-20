@@ -9,7 +9,7 @@
     <string name="title_timelog">Time Log</string>
     <string name="export_invitation">Please select file type:</string>
     <string name="title_export">Export activities</string>
-    <string name="export_timelog">TimeLog</string>
+    <string name="export_timelog">TimeLog (XML-based)</string>
     <string name="export_Xls">XLS (MS Excel)</string>
     <string name="export_plainText">TXT (plain text)</string>
     <string name="export_button">Export</string>

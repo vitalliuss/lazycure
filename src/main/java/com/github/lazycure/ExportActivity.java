@@ -55,6 +55,9 @@ public class ExportActivity extends LazyCureActivity {
 			case R.id.radio1:
 				exportDBasPlainText();
 				break;
+			case R.id.radio2:
+				exportTimeLogAsTimelog();
+				break;
 		}
 	}
 	
@@ -89,7 +92,19 @@ public class ExportActivity extends LazyCureActivity {
 		else{
 			Toast.makeText(context, "Cannot save the file", Toast.LENGTH_SHORT).show();
 		}
-		Writer.writeActivitiesInXLS(TIME_LOGS_DIRECTORY_NAME, filename, activities);
+	}
+	
+	public void exportTimeLogAsTimelog() {
+		String today = Time.getYYYYMMDD(Time.getCurrentDate());
+		String filename = today + TIMELOG_EXTENSION;
+		List<Activity> activities = db.getAllActivities();
+		OutputManager.updateActivitiesWithStartTime(activities);
+        if (Writer.writeActivitiesInTimeLog(TIME_LOGS_DIRECTORY_NAME, filename, activities)){
+			Toast.makeText(context, "Saved as Timelog file", Toast.LENGTH_SHORT).show();
+		}
+		else{
+			Toast.makeText(context, "Cannot save the file", Toast.LENGTH_SHORT).show();
+		}
 	}
 
 }

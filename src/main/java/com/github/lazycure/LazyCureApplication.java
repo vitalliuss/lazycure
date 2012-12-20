@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import main.java.com.github.lazycure.activities.Activity;
 import android.app.Application;
 import android.content.Context;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager.NameNotFoundException;
 
 public class LazyCureApplication extends Application {
 
@@ -23,6 +25,17 @@ public class LazyCureApplication extends Application {
 	public static Context getAppContext() {
         return LazyCureApplication.context;
     }
+	
+	public static String getVersionName() {
+		String versionName = "";
+		try {
+			PackageInfo pinfo = LazyCureApplication.getAppContext().getPackageManager().getPackageInfo(context.getPackageName(), 0);
+			versionName = pinfo.versionName;
+		} catch (NameNotFoundException e) {
+			e.printStackTrace();
+		}
+		return versionName;
+	}
 
 	public void setCurrentActivities(ArrayList<Activity> currentActivities) {
 		this.currentActivities = currentActivities;

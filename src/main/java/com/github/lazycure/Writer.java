@@ -12,6 +12,7 @@ import main.java.com.github.lazycure.activities.Activity;
 import android.content.Context;
 import android.os.Environment;
 import android.util.Log;
+import android.util.Xml;
 import android.widget.Toast;
 
 import org.apache.poi.hssf.usermodel.HSSFCellStyle;
@@ -22,6 +23,7 @@ import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
+import org.xmlpull.v1.XmlSerializer;
 
 public class Writer {
 
@@ -188,4 +190,64 @@ public class Writer {
 		return operationStatus;
 	}
 
+	public static boolean writeActivitiesInTimeLog(String directoryName,
+			String filename, List<Activity> activities) {
+		boolean operationStatus = false;
+		String today = Time.getYYYYMMDD(Time.getCurrentDate());
+
+		File root = new File(Environment.getExternalStorageDirectory(),
+				directoryName);
+		if (!root.exists()) {
+			root.mkdirs();
+		}
+		File file = new File(root, filename);
+		FileOutputStream os = null;
+		try {
+			if (checkSDCard() && root.canWrite()) {
+				os = new FileOutputStream(file);
+				// Create a XmlSerializer in order to write xml data
+				XmlSerializer serializer = Xml.newSerializer();
+				// Set the FileOutputStream as output for the serializer,
+				// using UTF-8 encoding
+				serializer.setOutput(os, "UTF-8");
+
+				// Write <?xml declaration with encoding (if encoding not null)
+				// and
+				// standalone flag (if standalone not null)
+				serializer.startDocument(null, true);
+				// start a root tag
+				serializer.startTag(null, "LazyCureData");
+				serializer.attribute(null, "LazyCureVersion", LazyCureApplication.getVersionName());
+				serializer.attribute(null, "Date", today);
+
+				for (int i = 0; i < activities.size(); i++) {
+					serializer.startTag(null, "Records");
+
+					serializer.startTag(null, "Activity");
+					serializer.text(activities.get(i).getName());
+					serializer.endTag(null, "Activity");
+
+					serializer.startTag(null, "Start");
+					serializer.text(Time.formatWithDefaultTimeZone(activities.get(i).getStartTime()));
+					serializer.endTag(null, "Start");
+
+					serializer.startTag(null, "Duration");
+					serializer.text(Time.formatWithDay(activities.get(i).getDuration()));
+					serializer.endTag(null, "Duration");
+
+					serializer.endTag(null, "Records");
+				}
+				serializer.endTag(null, "LazyCureData");
+				serializer.endDocument();
+				// write xml data into the FileOutputStream
+				serializer.flush();
+				// finally we close the file stream
+				os.close();
+				operationStatus = true;
+			}
+		} catch (IOException e) {
+			Log.e("Writer", "Could not write XML file " + e.getMessage());
+		}
+		return operationStatus;
+	}
 }
