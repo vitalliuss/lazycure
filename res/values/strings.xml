@@ -7,11 +7,15 @@
     <string name="input_hint">(specify what you are you doing)</string>
     <string name="title_about">About LazyCure</string>
     <string name="title_timelog">Time Log</string>
+    <string name="title_settings">Settings</string>
     <string name="export_invitation">Please select file type:</string>
     <string name="title_export">Export activities</string>
     <string name="export_timelog">TimeLog (XML-based)</string>
     <string name="export_Xls">XLS (MS Excel)</string>
     <string name="export_plainText">TXT (plain text)</string>
     <string name="export_button">Export</string>
-    <string name="export_LocationHint">You can find timelogs on your SD card in LazyCure/TimeLogs folder</string>
+    <string name="export_LocationHint">You can find timelogs on your SD card in the following folder:</string>
+    <string name="pref_export_location_title">Export location</string>
+    <string name="pref_export_location_summary">Folder to save the logs</string>
+    <string name="pref_export_location_default">LazyCure/TimeLogs</string>
 </resources>

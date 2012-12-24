@@ -9,16 +9,20 @@ import main.java.com.github.lazycure.db.DatabaseHandler;
 import main.java.com.github.lazycure.R;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class ExportActivity extends LazyCureActivity {
 	
 	private Button exportButton;
 	private RadioGroup fileType;
+	private TextView exportLocation;
 	private Context context = LazyCureApplication.getAppContext();
 	private String EMPTY_STRING = "";
 	private final String APP_DIRECTORY_NAME = "LazyCure";
@@ -26,6 +30,8 @@ public class ExportActivity extends LazyCureActivity {
 	private final String TXT_EXTENSION = ".txt";
 	private final String XLS_EXTENSION = ".xls";
 	private final String TIMELOG_EXTENSION = ".timelog";
+	private String EXPORT_LOCATION = TIME_LOGS_DIRECTORY_NAME;
+	
 	DatabaseHandler db = new DatabaseHandler(this);
 	
 	@Override
@@ -33,11 +39,19 @@ public class ExportActivity extends LazyCureActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.export);
         
+        SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this);
+        EXPORT_LOCATION = sharedPrefs.getString("export_location", TIME_LOGS_DIRECTORY_NAME);
+
         setUpViews();
     }
 	
 	private void setUpViews() {
 		exportButton = (Button)findViewById(R.id.exportButton);
+		exportLocation = (TextView)findViewById(R.id.exportLocation);
+		
+		String hint = getResources().getString(R.string.export_LocationHint);
+		exportLocation.setText(EXPORT_LOCATION);
+		
 		exportButton.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				exportTimeLog();
@@ -71,11 +85,11 @@ public class ExportActivity extends LazyCureActivity {
         Collections.reverse(activities);
 		//Print out the activities
         activitiesList = OutputManager.formatActivitiesList(activities);
-		if (Writer.writeFile(TIME_LOGS_DIRECTORY_NAME, filename, activitiesList)){
-			Toast.makeText(context, "Saved as Plain Text", Toast.LENGTH_SHORT).show();
+		if (Writer.writeFile(EXPORT_LOCATION, filename, activitiesList)){
+			Toast.makeText(context, "Saved as Plain Text to " + EXPORT_LOCATION, Toast.LENGTH_SHORT).show();
 		}
 		else{
-			Toast.makeText(context, "Cannot save the file", Toast.LENGTH_SHORT).show();
+			Toast.makeText(context, "Cannot save the file to " + EXPORT_LOCATION, Toast.LENGTH_SHORT).show();
 		}
 	}
 	
@@ -86,11 +100,11 @@ public class ExportActivity extends LazyCureActivity {
 		OutputManager.updateActivitiesWithStartTime(activities);
 		//Reverse the activities order
         Collections.reverse(activities);
-        if (Writer.writeActivitiesInXLS(TIME_LOGS_DIRECTORY_NAME, filename, activities)){
-			Toast.makeText(context, "Saved as XLS file", Toast.LENGTH_SHORT).show();
+        if (Writer.writeActivitiesInXLS(EXPORT_LOCATION, filename, activities)){
+			Toast.makeText(context, "Saved as XLS file to " + EXPORT_LOCATION, Toast.LENGTH_SHORT).show();
 		}
 		else{
-			Toast.makeText(context, "Cannot save the file", Toast.LENGTH_SHORT).show();
+			Toast.makeText(context, "Cannot save the file to " + EXPORT_LOCATION, Toast.LENGTH_SHORT).show();
 		}
 	}
 	
@@ -99,11 +113,11 @@ public class ExportActivity extends LazyCureActivity {
 		String filename = today + TIMELOG_EXTENSION;
 		List<Activity> activities = db.getAllActivities();
 		OutputManager.updateActivitiesWithStartTime(activities);
-        if (Writer.writeActivitiesInTimeLog(TIME_LOGS_DIRECTORY_NAME, filename, activities)){
-			Toast.makeText(context, "Saved as Timelog file", Toast.LENGTH_SHORT).show();
+        if (Writer.writeActivitiesInTimeLog(EXPORT_LOCATION, filename, activities)){
+			Toast.makeText(context, "Saved as Timelog file to " + EXPORT_LOCATION, Toast.LENGTH_SHORT).show();
 		}
 		else{
-			Toast.makeText(context, "Cannot save the file", Toast.LENGTH_SHORT).show();
+			Toast.makeText(context, "Cannot save the file to " + EXPORT_LOCATION, Toast.LENGTH_SHORT).show();
 		}
 	}
 

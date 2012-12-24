@@ -99,6 +99,10 @@ public class ViewActivitiesActivity extends LazyCureActivity {
 	        	about.setClass(LazyCureApplication.getAppContext(), AboutActivity.class);
 	        	startActivity(about);
 	        	break;
+	        case R.id.settings:
+	        	Intent settings = new Intent();
+	        	settings.setClass(LazyCureApplication.getAppContext(), SettingsActivity.class);
+	        	startActivity(settings);
 	    }
 	    return true;
 	}
