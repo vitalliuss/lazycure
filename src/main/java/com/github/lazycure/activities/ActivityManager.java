@@ -1,5 +1,6 @@
 package main.java.com.github.lazycure.activities;
 
+import java.util.Date;
 import java.util.List;
 
 import main.java.com.github.lazycure.LazyCureApplication;
@@ -42,6 +43,23 @@ public class ActivityManager {
 			}
 			else{
 		        db.addActivity(new Activity(trimmed, null, Time.getCurrentDate()));
+			}
+		}
+	}
+	
+	public static void addActivity(String activityName, Date finishTime) {
+		if (activityName.length() != 0){
+			String trimmed = activityName.trim();
+			if (!isFirstActivity()){
+				if (trimmed.equalsIgnoreCase(getLastActivity().getName())){
+					continueLatestActivity();
+				}
+				else{
+					db.addActivity(new Activity(trimmed, null, finishTime));
+				}
+			}
+			else{
+		        db.addActivity(new Activity(trimmed, null, finishTime));
 			}
 		}
 	}

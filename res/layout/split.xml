@@ -1,0 +1,64 @@
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@color/white"
+        android:color="@color/black" >
+ >
+
+        <TextView
+            android:id="@+id/split_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:text="@string/split_message" />
+
+        <EditText
+            android:id="@+id/split_first_activity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/split_second_activity"
+            android:layout_below="@+id/split_message"
+            android:ems="10" >
+
+            <requestFocus />
+        </EditText>
+
+        <Button
+            android:id="@+id/split_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/split_second_activity"
+            android:text="@string/split_button" />
+
+        <TextView
+            android:id="@+id/split_hint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/split_first_activity"
+            android:layout_centerHorizontal="true"
+            android:textColor="@color/black"
+            android:text="@string/split_first_activity_time_message" />
+
+        <TimePicker
+            android:id="@+id/split_timer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_alignLeft="@+id/split_second_activity"
+            android:layout_below="@+id/split_hint" />
+
+        <EditText
+            android:id="@+id/split_second_activity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/split_timer"
+            android:layout_centerHorizontal="true"
+            android:ems="10" />
+
+    </RelativeLayout>

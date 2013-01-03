@@ -5,11 +5,12 @@
     <string name="doneButton_text">Done!</string>
     <string name="backButton_text">Back</string>
     <string name="input_hint">(specify what you are you doing)</string>
-    <string name="title_about">About LazyCure</string>
+    <string name="title_about">About LazyCure 0.6</string>
     <string name="title_timelog">Time Log</string>
     <string name="title_settings">Settings</string>
-    <string name="export_invitation">Please select file type:</string>
+    <string name="title_split">Split activity</string>
     <string name="title_export">Export activities</string>
+    <string name="export_invitation">Please select file type:</string>
     <string name="export_timelog">TimeLog (XML-based)</string>
     <string name="export_Xls">XLS (MS Excel)</string>
     <string name="export_plainText">TXT (plain text)</string>
@@ -18,4 +19,13 @@
     <string name="pref_export_location_title">Export location</string>
     <string name="pref_export_location_summary">Folder to save the logs</string>
     <string name="pref_export_location_default">LazyCure/TimeLogs</string>
+    <string name="pref_split_switcher_title">Split activities</string>
+    <string name="pref_split_switcher_summary">Allow splitting the activities by separator</string>
+    <string name="pref_split_switcher_default">true</string>
+    <string name="pref_split_separator_title">Split separator</string>
+    <string name="pref_split_separator_summary">Char to separate two activities</string>
+    <string name="pref_split_separator_default">,</string>
+    <string name="split_button">Split!</string>
+    <string name="split_message">Looks like you have done several activities! Please split them into two instances</string>
+    <string name="split_first_activity_time_message">Time spent for first activity:</string>
 </resources>

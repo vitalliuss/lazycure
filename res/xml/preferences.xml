@@ -5,4 +5,15 @@
         android:title="@string/pref_export_location_title"
         android:summary="@string/pref_export_location_summary"
         android:defaultValue="@string/pref_export_location_default" />
+    <CheckBoxPreference
+        android:key="split_switcher"
+        android:title="@string/pref_split_switcher_title"
+        android:summary="@string/pref_split_switcher_summary"
+        android:defaultValue="true" />
+    <EditTextPreference
+        android:key="split_separator"
+        android:title="@string/pref_split_separator_title"
+        android:summary="@string/pref_split_separator_summary"
+        android:defaultValue="@string/pref_split_separator_default"
+        android:dependency="split_switcher" />
 </PreferenceScreen>

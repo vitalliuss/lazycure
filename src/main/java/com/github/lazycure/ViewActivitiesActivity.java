@@ -12,9 +12,11 @@ import main.java.com.github.lazycure.R;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.preference.PreferenceManager;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -38,6 +40,9 @@ public class ViewActivitiesActivity extends LazyCureActivity {
 	private EditText activityNameEditText;
 	DatabaseHandler db = new DatabaseHandler(this);
 	private ActivitiesTableManager activitiesTableManager = new ActivitiesTableManager(this);
+	private String DEFAULT_SPLIT_SEPARATOR = ",";
+	private String SPLIT_SEPARATOR = DEFAULT_SPLIT_SEPARATOR;
+	private boolean SPLIT_ACTIVITIES = true;
 	
 	private RefreshHandler mRedrawHandler = new RefreshHandler();
 		class RefreshHandler extends Handler {
@@ -64,6 +69,10 @@ public class ViewActivitiesActivity extends LazyCureActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
+        
+        SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this);
+        SPLIT_SEPARATOR = sharedPrefs.getString("split_separator", DEFAULT_SPLIT_SEPARATOR);
+        SPLIT_ACTIVITIES = sharedPrefs.getBoolean("split_switcher", true);
         
         setUpViews();
     }
@@ -144,7 +153,17 @@ public class ViewActivitiesActivity extends LazyCureActivity {
 	
 	private void addActivity() {
 		String activityName = activityNameEditText.getText().toString();
-		ActivityManager.addActivity(activityName);
+		// Check if split feature turned on and activity has separator
+		if (SPLIT_ACTIVITIES && activityName.contains(SPLIT_SEPARATOR)) {
+			Intent intent = new Intent();
+			intent.setClass(LazyCureApplication.getAppContext(),
+					SplitActivity.class);
+			intent.putExtra("inputString", activityName);
+			intent.putExtra("separator", SPLIT_SEPARATOR);
+			startActivity(intent);
+		} else {
+			ActivityManager.addActivity(activityName);
+		}
 		clearInput();
 		showActivities();
 	}

@@ -1,3 +1,8 @@
+LazyCure 0.6:
+ * Split activity into two instances with manual time correction
+ * Export activity in Timelog format (.timelog) for synchronization with desktop version
+ * Export location can be changed in settings
+
 LazyCure 0.5:
 
  * Export activity in plain text (.txt) or Microsoft Excel spreadsheet (.xls)
