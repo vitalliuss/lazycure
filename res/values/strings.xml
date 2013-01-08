@@ -25,6 +25,12 @@
     <string name="pref_split_separator_title">Split separator</string>
     <string name="pref_split_separator_summary">Char to separate two activities</string>
     <string name="pref_split_separator_default">,</string>
+    <string name="pref_default_activity_title">Default activity mode</string>
+    <string name="pref_default_activity_summary">Record the activity when Done button is pressed with empty text</string>
+    <string name="pref_default_activity_default">false</string>
+    <string name="pref_default_activity_name_title">Name of default activity</string>
+    <string name="pref_default_activity_name_summary">Activity will be recorded in default activity mode</string>
+    <string name="pref_default_activity_name_default">rest</string>
     <string name="split_button">Split!</string>
     <string name="split_message">Looks like you have done several activities! Please split them into two instances</string>
     <string name="split_first_activity_time_message">Time spent for first activity:</string>

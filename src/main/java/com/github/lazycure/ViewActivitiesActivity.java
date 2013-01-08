@@ -43,6 +43,9 @@ public class ViewActivitiesActivity extends LazyCureActivity {
 	private String DEFAULT_SPLIT_SEPARATOR = ",";
 	private String SPLIT_SEPARATOR = DEFAULT_SPLIT_SEPARATOR;
 	private boolean SPLIT_ACTIVITIES = true;
+	private String DEFAULT_ACTIVITY_NAME_ORIGINAL = "rest";
+	private String DEFAULT_ACTIVITY_NAME = DEFAULT_ACTIVITY_NAME_ORIGINAL;
+	private boolean DEFAULT_ACTIVITY_MODE = false;
 	
 	private RefreshHandler mRedrawHandler = new RefreshHandler();
 		class RefreshHandler extends Handler {
@@ -73,6 +76,8 @@ public class ViewActivitiesActivity extends LazyCureActivity {
         SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this);
         SPLIT_SEPARATOR = sharedPrefs.getString("split_separator", DEFAULT_SPLIT_SEPARATOR);
         SPLIT_ACTIVITIES = sharedPrefs.getBoolean("split_switcher", true);
+        DEFAULT_ACTIVITY_NAME = sharedPrefs.getString("default_activity_name", DEFAULT_ACTIVITY_NAME_ORIGINAL);
+        DEFAULT_ACTIVITY_MODE = sharedPrefs.getBoolean("default_activity", false);
         
         setUpViews();
     }
@@ -153,6 +158,10 @@ public class ViewActivitiesActivity extends LazyCureActivity {
 	
 	private void addActivity() {
 		String activityName = activityNameEditText.getText().toString();
+		//Check if Default Activity Mode is ON and activity name is empty
+		if (DEFAULT_ACTIVITY_MODE && activityName.length() == 0) {
+			activityName = DEFAULT_ACTIVITY_NAME;
+		}
 		// Check if split feature turned on and activity has separator
 		if (SPLIT_ACTIVITIES && activityName.contains(SPLIT_SEPARATOR)) {
 			Intent intent = new Intent();

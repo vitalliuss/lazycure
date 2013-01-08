@@ -77,6 +77,12 @@ public final class R {
         public static final int export_plainText=0x7f08000d;
         public static final int export_timelog=0x7f08000b;
         public static final int input_hint=0x7f080004;
+        public static final int pref_default_activity_default=0x7f08001b;
+        public static final int pref_default_activity_name_default=0x7f08001e;
+        public static final int pref_default_activity_name_summary=0x7f08001d;
+        public static final int pref_default_activity_name_title=0x7f08001c;
+        public static final int pref_default_activity_summary=0x7f08001a;
+        public static final int pref_default_activity_title=0x7f080019;
         public static final int pref_export_location_default=0x7f080012;
         public static final int pref_export_location_summary=0x7f080011;
         public static final int pref_export_location_title=0x7f080010;
@@ -86,9 +92,9 @@ public final class R {
         public static final int pref_split_switcher_default=0x7f080015;
         public static final int pref_split_switcher_summary=0x7f080014;
         public static final int pref_split_switcher_title=0x7f080013;
-        public static final int split_button=0x7f080019;
-        public static final int split_first_activity_time_message=0x7f08001b;
-        public static final int split_message=0x7f08001a;
+        public static final int split_button=0x7f08001f;
+        public static final int split_first_activity_time_message=0x7f080021;
+        public static final int split_message=0x7f080020;
         public static final int title_about=0x7f080005;
         public static final int title_export=0x7f080009;
         public static final int title_settings=0x7f080007;

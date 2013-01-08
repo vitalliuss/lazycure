@@ -1,19 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-    <EditTextPreference
-        android:key="export_location"
-        android:title="@string/pref_export_location_title"
-        android:summary="@string/pref_export_location_summary"
-        android:defaultValue="@string/pref_export_location_default" />
-    <CheckBoxPreference
-        android:key="split_switcher"
-        android:title="@string/pref_split_switcher_title"
-        android:summary="@string/pref_split_switcher_summary"
-        android:defaultValue="true" />
-    <EditTextPreference
-        android:key="split_separator"
-        android:title="@string/pref_split_separator_title"
-        android:summary="@string/pref_split_separator_summary"
-        android:defaultValue="@string/pref_split_separator_default"
-        android:dependency="split_switcher" />
+    <PreferenceCategory
+        android:title="Export"
+        android:key="export_category">
+	    <EditTextPreference
+	        android:key="export_location"
+	        android:title="@string/pref_export_location_title"
+	        android:summary="@string/pref_export_location_summary"
+	        android:defaultValue="@string/pref_export_location_default" />
+    </PreferenceCategory>
+    
+    <PreferenceCategory
+        android:title="Splitting"
+        android:key="splitting_category">
+	    <CheckBoxPreference
+	        android:key="split_switcher"
+	        android:title="@string/pref_split_switcher_title"
+	        android:summary="@string/pref_split_switcher_summary"
+	        android:defaultValue="true" />
+	    <EditTextPreference
+	        android:key="split_separator"
+	        android:title="@string/pref_split_separator_title"
+	        android:summary="@string/pref_split_separator_summary"
+	        android:defaultValue="@string/pref_split_separator_default"
+	        android:dependency="split_switcher" />
+    </PreferenceCategory>
+    
+    <PreferenceCategory
+        android:title="Advanced"
+        android:key="advanced_category">
+	    <CheckBoxPreference
+	        android:key="default_activity"
+	        android:title="@string/pref_default_activity_title"
+	        android:summary="@string/pref_default_activity_summary"
+	        android:defaultValue="false" />
+	    <EditTextPreference
+	        android:key="default_activity_name"
+	        android:title="@string/pref_default_activity_name_title"
+	        android:summary="@string/pref_default_activity_name_summary"
+	        android:defaultValue="@string/pref_default_activity_name_default"
+	        android:dependency="default_activity" />
+    </PreferenceCategory>
 </PreferenceScreen>
