@@ -14,44 +14,43 @@
             android:layout_centerHorizontal="true"
             android:gravity="center"
             android:textColor="@color/black"
-            android:text="@string/split_message" />
-
-        <EditText
-            android:id="@+id/split_first_activity"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/split_second_activity"
-            android:layout_below="@+id/split_message"
-            android:ems="10" >
-
-            <requestFocus />
-        </EditText>
+            android:text="@string/split_message"/>
 
         <Button
             android:id="@+id/split_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentRight="true"
-            android:layout_below="@+id/split_second_activity"
             android:text="@string/split_button" />
+
+        <EditText
+            android:id="@+id/split_first_activity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/split_timer"
+            android:layout_below="@+id/split_hint"
+            android:ems="10" />
 
         <TextView
             android:id="@+id/split_hint"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/split_first_activity"
+            android:layout_below="@+id/split_message"
             android:layout_centerHorizontal="true"
-            android:textColor="@color/black"
-            android:text="@string/split_first_activity_time_message" />
+            android:text="@string/split_first_activity_time_message"
+            android:textColor="@color/black" />
 
         <TimePicker
             android:id="@+id/split_timer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
             android:layout_alignLeft="@+id/split_second_activity"
-            android:layout_below="@+id/split_hint" />
+            android:layout_below="@+id/split_first_activity"
+            android:gravity="center">
+            <requestFocus />
+        </TimePicker>
 
         <EditText
             android:id="@+id/split_second_activity"

@@ -53,9 +53,6 @@ public class SplitActivity extends LazyCureActivity {
 		//Remove AM/PM switcher
 		timePicker.setIs24HourView(true);
 
-		int hour = timePicker.getCurrentHour();
-		int minute = timePicker.getCurrentMinute();
-		
 		Activity lastActivity = ActivityManager.getLastActivity();
 		final Date lastActivityFinishTime = lastActivity.getFinishTime();
 		Log.d("Split", "lastActivityFinishTime: " + lastActivity.getFinishTime().toString());
@@ -71,9 +68,23 @@ public class SplitActivity extends LazyCureActivity {
 		Log.d("Split", "Total duration hours: " + new Date(totalDuration).getHours());
 		Log.d("Split", "Total duration minutes: " + new Date(totalDuration).getMinutes());
 		
+		//Get the total duration time
+		int hour = totalDurationDate.getHours();
+		int minute = totalDurationDate.getMinutes();
+		int totalMinutes = Time.HoursAndMinutestToMinutes(hour, minute);
+		
+		//Set the total time to window title
+		String totalTimeString = Time.MinutestToHoursAndMunites(totalMinutes);
+		this.setTitle(getString(R.string.title_split) + " - " + totalTimeString);
+		
 		//Set the time for TimePicker
-		timePicker.setCurrentHour(totalDurationDate.getHours());
-		timePicker.setCurrentMinute(totalDurationDate.getMinutes());
+		int halfMinutes = totalMinutes / 2;
+		String halfTimeString = Time.MinutestToHoursAndMunites(halfMinutes);
+		int halfTimeHour = Integer.parseInt(halfTimeString.split("\\:")[0]);
+		int halfTimeMinute = Integer.parseInt(halfTimeString.split("\\:")[1]);
+		
+		timePicker.setCurrentHour(halfTimeHour);
+		timePicker.setCurrentMinute(halfTimeMinute);
 		
 		splitButton.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {

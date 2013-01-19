@@ -54,4 +54,26 @@ public class TimeTest extends TestCase {
 		assertEquals("1d0:00", Time.formatAndRoundWithDay(59*1000+59*1000*60+23*1000*60*60));
 		assertEquals("1:01", Time.formatAndRoundWithDay(1000+1000*60+1000*60*60));
 	}
+	@Test
+	public void testHoursToMinutest() {
+		assertEquals(0, Time.HoursToMinutes(0));
+		assertEquals(60, Time.HoursToMinutes(1));
+		assertEquals(120, Time.HoursToMinutes(2));
+	}
+	@Test
+	public void testMinutestToHoursAndMunites() {
+		assertEquals("00:00", Time.MinutestToHoursAndMunites(0));
+		assertEquals("01:00", Time.MinutestToHoursAndMunites(60));
+		assertEquals("02:00", Time.MinutestToHoursAndMunites(120));
+		assertEquals("01:01", Time.MinutestToHoursAndMunites(61));
+		assertEquals("01:59", Time.MinutestToHoursAndMunites(119));
+	}
+	@Test
+	public void testHoursAndMinutestToMinutes() {
+		assertEquals(0, Time.HoursAndMinutestToMinutes(0, 0));
+		assertEquals(1, Time.HoursAndMinutestToMinutes(0, 1));
+		assertEquals(60, Time.HoursAndMinutestToMinutes(1, 0));
+		assertEquals(61, Time.HoursAndMinutestToMinutes(1, 1));
+		assertEquals(179, Time.HoursAndMinutestToMinutes(2, 59));
+	}
 }

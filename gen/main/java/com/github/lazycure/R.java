@@ -42,12 +42,12 @@ public final class R {
         public static final int radio1=0x7f0a0005;
         public static final int radio2=0x7f0a0006;
         public static final int settings=0x7f0a0019;
-        public static final int split_button=0x7f0a0012;
-        public static final int split_first_activity=0x7f0a0010;
+        public static final int split_button=0x7f0a0010;
+        public static final int split_first_activity=0x7f0a0011;
         public static final int split_hint=0x7f0a0013;
         public static final int split_message=0x7f0a000f;
-        public static final int split_second_activity=0x7f0a0011;
-        public static final int split_timer=0x7f0a0014;
+        public static final int split_second_activity=0x7f0a0014;
+        public static final int split_timer=0x7f0a0012;
         public static final int timeLabel=0x7f0a000b;
         public static final int timeLogTable=0x7f0a0015;
         public static final int timeLogView=0x7f0a0017;

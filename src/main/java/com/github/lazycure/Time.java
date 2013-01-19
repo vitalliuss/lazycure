@@ -189,4 +189,36 @@ public class Time {
 	public static String formatAndRoundWithDay(Date duration) {
 		return formatAndRoundWithDay(duration.getTime());
 	}
+	
+	/**
+	 * Convert hours to minutes
+	 * @param hours
+	 * @return minutes
+	 */
+	public static int HoursToMinutes(int hours) {
+		return (int) (hours * MINUTES);
+	}
+	
+	/**
+	 * Format HH:mm string from minutest count
+	 * @param minutesCount
+	 * @return time string
+	 */
+	public static String MinutestToHoursAndMunites(int minutesCount) {
+		int hours = minutesCount / 60;
+		int minutes = minutesCount % 60;
+		String result = String.format("%02d:%02d", hours, minutes);
+		return result;
+	}
+	
+	/**
+	 * Convert hours and minutes to minutes
+	 * @param hours
+	 * @param minutes
+	 * @return minutest total
+	 */
+	public static int HoursAndMinutestToMinutes(int hours, int minutes) {
+		int result = (hours * 60) + minutes;
+		return result;
+	}
 }
