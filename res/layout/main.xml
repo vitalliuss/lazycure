@@ -50,14 +50,20 @@
 		android:scrollbars="vertical"
 		android:scrollbarFadeDuration="1000"
 		android:layout_below="@+id/activities_title">
-	    <LinearLayout
-	        android:layout_width="fill_parent"
+        <HorizontalScrollView
+            android:layout_width="fill_parent"
 	        android:layout_height="wrap_content"
-	        android:orientation="vertical" >
-		    <TableLayout
-		        android:id="@+id/activitiesTable"
-		        android:layout_width="fill_parent"
-		        android:layout_height="fill_parent" />
-		</LinearLayout>
+	        android:scrollbars="horizontal"
+			android:scrollbarFadeDuration="1000">
+		    <LinearLayout
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:orientation="vertical" >
+			    <TableLayout
+			        android:id="@+id/activitiesTable"
+			        android:layout_width="fill_parent"
+			        android:layout_height="fill_parent" />
+			</LinearLayout>
+		</HorizontalScrollView>
 	</ScrollView>
 </RelativeLayout>

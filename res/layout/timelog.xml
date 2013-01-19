@@ -10,13 +10,19 @@
 			android:layout_height="fill_parent"
 			android:scrollbars="vertical"
 			android:scrollbarFadeDuration="1000">
-			<TableLayout
-			    android:id="@+id/timeLogTable"
-			    android:background="@color/white"
-			    android:scrollbarAlwaysDrawVerticalTrack="true"
-			    android:layout_width="fill_parent"
-			    android:layout_height="wrap_content"
-			    >
-			</TableLayout>
+			<HorizontalScrollView
+            android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:scrollbars="horizontal"
+			android:scrollbarFadeDuration="1000">
+				<TableLayout
+				    android:id="@+id/timeLogTable"
+				    android:background="@color/white"
+				    android:scrollbarAlwaysDrawVerticalTrack="true"
+				    android:layout_width="wrap_content"
+				    android:layout_height="wrap_content"
+				    >
+				</TableLayout>
+			</HorizontalScrollView>
 	</ScrollView>
 </RelativeLayout>
