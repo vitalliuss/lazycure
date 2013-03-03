@@ -129,6 +129,8 @@ public class ViewActivitiesActivity extends LazyCureActivity {
         OutputManager.updateActivitiesWithStartTime(activities);
 		//Reverse the activities order
         Collections.reverse(activities);
+        //Remove test activity
+        activitiesTableManager.removeTestActivity(activities);
 		//Print out the activities
 		activitiesTableManager.showTable(activities);
 		if (activities.size() != 0){

@@ -5,7 +5,6 @@ import java.util.List;
 import main.java.com.github.lazycure.OutputManager;
 import main.java.com.github.lazycure.Time;
 import main.java.com.github.lazycure.activities.Activity;
-
 import android.content.Context;
 import android.graphics.Color;
 import android.widget.TableLayout;
@@ -41,6 +40,20 @@ public class ActivitiesTableManager {
 						showDaySeparator(activities.get(i));
 					}
 				}
+			}
+		}
+	}
+
+	/**
+	 * remove test activity from the list before printing
+	 * @param activities
+	 */
+	public void removeTestActivity(List<Activity> activities) {
+		if (activities.size() != 0) {
+			int lastPosition = activities.size()-1;
+			Activity _last = activities.get(lastPosition);
+			if (_last.getName().equalsIgnoreCase(OutputManager.TEST_ACTIVITY_NAME)) {
+				activities.remove(lastPosition);
 			}
 		}
 	}
