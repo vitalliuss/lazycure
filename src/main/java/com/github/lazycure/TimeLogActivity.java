@@ -45,7 +45,7 @@ public class TimeLogActivity extends LazyCureActivity {
 		// Print out the activities
 		TimeLogManager timeLog = new TimeLogManager(context);
 		timeLog.setTable(timeLogTable);
-		timeLog.showTable(activities);
+		timeLog.showTable(activities, 500);
 
 	}
 

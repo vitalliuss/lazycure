@@ -43,6 +43,27 @@ public class ActivitiesTableManager {
 			}
 		}
 	}
+	
+	/**
+	 * show table of last N activities
+	 * @param activities activities list
+	 * @param activitiesNumberToShow number of last activities to show
+	 */
+	public void showTable(List<Activity> activities, int activitiesNumberToShow) {
+		if(this.activitiesTable!=null){
+			this.activitiesTable.removeAllViews();
+	        for (int i=0; i<activities.size(); i++) {
+	        	if (i<activitiesNumberToShow-1) {
+	        		showActivity(activities.get(i));
+					if (i<activities.size()-1){
+						if (!OutputManager.isOnSameDay(activities.get(i), activities.get(i+1))){
+							showDaySeparator(activities.get(i));
+						}
+					}
+	        	}
+			}
+		}
+	}
 
 	/**
 	 * remove test activity from the list before printing

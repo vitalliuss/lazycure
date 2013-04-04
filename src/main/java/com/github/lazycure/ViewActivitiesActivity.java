@@ -132,7 +132,7 @@ public class ViewActivitiesActivity extends LazyCureActivity {
         //Remove test activity
         activitiesTableManager.removeTestActivity(activities);
 		//Print out the activities
-		activitiesTableManager.showTable(activities);
+		activitiesTableManager.showTable(activities, 100);
 		if (activities.size() != 0){
 			//Set the latest activity time for timeLabel
 			lastActivity = activities.get(0).getFinishTime().getTime();
