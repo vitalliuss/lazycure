@@ -13,20 +13,22 @@ import main.java.com.github.lazycure.R;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.preference.PreferenceManager;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup.LayoutParams;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TableLayout;
+import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 
 /*
@@ -130,8 +132,39 @@ public class ViewActivitiesActivity extends LazyCureActivity {
 		//Reverse the activities order
         Collections.reverse(activities);
 		//Print out the activities
-		activitiesTableManager.showTable(activities);
-		if (activities.size() != 0){
+
+        LayoutInflater ltInflater = getLayoutInflater();
+        LinearLayout linLayout = (LinearLayout) findViewById(R.id.main);
+        linLayout.removeAllViews();
+
+        for (int i=0; i< activities.size(); i++){
+        	Activity activity = activities.get(i); 
+        	String name = activity.getName();
+        	String start = Time.formatAndRoundWithDefaultTimeZone(activity.getStartTime());
+        	String duration = Time.formatAndRoundWithDay(activity.getDuration());
+        	int textColor = Color.WHITE;
+        	int backgroundColor = Color.BLUE;
+        	
+            View item = ltInflater.inflate(R.layout.activity, linLayout, false);
+            TextView activityItemName = (TextView) item.findViewById(R.id.activityItemName);
+            activityItemName.setText(name);
+            activityItemName.setTextColor(textColor);
+
+            TextView activityItemStartTime = (TextView) item.findViewById(R.id.activityItemStartTime);
+            activityItemStartTime.setText("Start: " + start);
+            activityItemStartTime.setTextColor(textColor);
+            
+            TextView activityItemDuration = (TextView) item.findViewById(R.id.activityItemDuration);
+            activityItemDuration.setText("Duration: " + duration);
+            activityItemDuration.setTextColor(textColor);
+            
+            item.getLayoutParams().width = LayoutParams.FILL_PARENT;
+            item.setBackgroundColor(backgroundColor);
+            
+            linLayout.addView(item);
+        }
+        
+        if (activities.size() != 0){
 			//Set the latest activity time for timeLabel
 			lastActivity = activities.get(0).getFinishTime().getTime();
         }
@@ -143,7 +176,6 @@ public class ViewActivitiesActivity extends LazyCureActivity {
 	
 	private void setUpViews() {
 		doneButton = (Button)findViewById(R.id.done_button);
-		activitiesTableManager.setTable((TableLayout) this.findViewById(R.id.activitiesTable));
 		activityNameEditText = (EditText)findViewById(R.id.input);
 		timeLabel = (TextView) this.findViewById(R.id.timeLabel);
 		
