@@ -25,39 +25,43 @@ public final class R {
         public static final int icon_timelog=0x7f020004;
     }
     public static final class id {
-        public static final int about=0x7f0a0018;
+        public static final int about=0x7f0a001b;
         public static final int aboutText=0x7f0a0001;
-        public static final int activitiesTable=0x7f0a000e;
-        public static final int activities_title=0x7f0a000d;
+        public static final int activities_title=0x7f0a0010;
+        public static final int activityItemDuration=0x7f0a0004;
+        public static final int activityItemName=0x7f0a0002;
+        public static final int activityItemStartTime=0x7f0a0003;
         public static final int backButton=0x7f0a0000;
-        public static final int done_button=0x7f0a000c;
-        public static final int export=0x7f0a0016;
-        public static final int exportButton=0x7f0a0007;
-        public static final int exportInvitation=0x7f0a0002;
-        public static final int exportLocation=0x7f0a0009;
-        public static final int exportLocationHint=0x7f0a0008;
-        public static final int fileType=0x7f0a0003;
-        public static final int input=0x7f0a000a;
-        public static final int radio0=0x7f0a0004;
-        public static final int radio1=0x7f0a0005;
-        public static final int radio2=0x7f0a0006;
-        public static final int settings=0x7f0a0019;
-        public static final int split_button=0x7f0a0010;
-        public static final int split_first_activity=0x7f0a0011;
-        public static final int split_hint=0x7f0a0013;
-        public static final int split_message=0x7f0a000f;
-        public static final int split_second_activity=0x7f0a0014;
-        public static final int split_timer=0x7f0a0012;
-        public static final int timeLabel=0x7f0a000b;
-        public static final int timeLogTable=0x7f0a0015;
-        public static final int timeLogView=0x7f0a0017;
+        public static final int done_button=0x7f0a000f;
+        public static final int export=0x7f0a0019;
+        public static final int exportButton=0x7f0a000a;
+        public static final int exportInvitation=0x7f0a0005;
+        public static final int exportLocation=0x7f0a000c;
+        public static final int exportLocationHint=0x7f0a000b;
+        public static final int fileType=0x7f0a0006;
+        public static final int input=0x7f0a000d;
+        public static final int main=0x7f0a0011;
+        public static final int radio0=0x7f0a0007;
+        public static final int radio1=0x7f0a0008;
+        public static final int radio2=0x7f0a0009;
+        public static final int settings=0x7f0a001c;
+        public static final int split_button=0x7f0a0013;
+        public static final int split_first_activity=0x7f0a0014;
+        public static final int split_hint=0x7f0a0016;
+        public static final int split_message=0x7f0a0012;
+        public static final int split_second_activity=0x7f0a0017;
+        public static final int split_timer=0x7f0a0015;
+        public static final int timeLabel=0x7f0a000e;
+        public static final int timeLogTable=0x7f0a0018;
+        public static final int timeLogView=0x7f0a001a;
     }
     public static final class layout {
         public static final int about=0x7f030000;
-        public static final int export=0x7f030001;
-        public static final int main=0x7f030002;
-        public static final int split=0x7f030003;
-        public static final int timelog=0x7f030004;
+        public static final int activity=0x7f030001;
+        public static final int export=0x7f030002;
+        public static final int main=0x7f030003;
+        public static final int split=0x7f030004;
+        public static final int timelog=0x7f030005;
     }
     public static final class menu {
         public static final int menu=0x7f090000;
