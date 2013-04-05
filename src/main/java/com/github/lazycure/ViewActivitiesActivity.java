@@ -139,7 +139,7 @@ public class ViewActivitiesActivity extends LazyCureActivity {
 
         for (int i=0; i< activities.size(); i++){
         	Activity activity = activities.get(i); 
-        	String name = activity.getName();
+        	String name = OutputManager.cropName(activity.getName());
         	String start = Time.formatAndRoundWithDefaultTimeZone(activity.getStartTime());
         	String duration = Time.formatAndRoundWithDay(activity.getDuration());
         	int textColor = Color.WHITE;

@@ -15,6 +15,8 @@ public class OutputManager {
 	public final static String DELIMITER = " ";
 	public final static String TEST_ACTIVITY_NAME = "test";
 	public final static String DAY_SEPARATION_LINE = "=====";
+	public final static String THREE_DOTS = "...";
+	public final static int SYMBOLS_TO_KEEP = 25;
 	public static int lastDayNumber;
 	
 	public static String formatActivitiesList(List<Activity> activities){
@@ -83,5 +85,20 @@ public class OutputManager {
 		buffer.append(Time.getYYYYMMDD(previousActivityDate));
 		buffer.append(DAY_SEPARATION_LINE);
 		return buffer.toString();
+	}
+
+	/**
+	 * Crop the activity name in order to fit one row on the screen
+	 * @param activityName
+	 * @param symbolsToKeep
+	 * @return cropped string
+	 */
+	public static String cropName(String activityName) {
+		String newName = activityName;
+		if (activityName.length() > SYMBOLS_TO_KEEP - THREE_DOTS.length()) {
+			newName = activityName.substring(0, SYMBOLS_TO_KEEP - THREE_DOTS.length());
+			newName = newName.concat(THREE_DOTS);
+		}
+		return newName;
 	}
 }
