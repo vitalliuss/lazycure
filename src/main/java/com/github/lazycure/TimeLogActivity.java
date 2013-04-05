@@ -23,6 +23,7 @@ public class TimeLogActivity extends LazyCureActivity {
 	DatabaseHandler db = new DatabaseHandler(this);
 	private TableLayout timeLogTable = null;
 	private Context context = LazyCureApplication.getAppContext();
+	private ActivitiesTableManager activitiesTableManager = new ActivitiesTableManager(context);
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -39,10 +40,12 @@ public class TimeLogActivity extends LazyCureActivity {
 		OutputManager.updateActivitiesWithStartTime(activities);
 		// Reverse the activities order
 		Collections.reverse(activities);
+		//Remove test activity
+        activitiesTableManager.removeTestActivity(activities);
 		// Print out the activities
 		TimeLogManager timeLog = new TimeLogManager(context);
 		timeLog.setTable(timeLogTable);
-		timeLog.showTable(activities);
+		timeLog.showTable(activities, 500);
 
 	}
 

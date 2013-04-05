@@ -38,6 +38,23 @@ public class TimeLogManager extends ActivitiesTableManager {
 			}
 		}
 	}
+	
+	/**
+	 * @param activities activities list
+	 * @param activitiesNumberToShow number of last activities to show
+	 */
+	@Override
+	public void showTable(List<Activity> activities, int activitiesNumberToShow) {
+		if (this.timeLogTable != null) {
+			this.timeLogTable.removeAllViews();
+			this.buildHeader();
+			for (int i = 0; i < activities.size(); i++) {
+				if (i<activitiesNumberToShow-1) {
+					showActivity(activities.get(i));
+				}
+			}
+		}
+	}
 
 	/**
 	 * Create first row with columns names

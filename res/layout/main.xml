@@ -28,15 +28,6 @@
         android:text="@string/doneButton_text" />
 
     <TextView
-        android:id="@+id/activities_title"
-        android:textColor="@color/black"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/done_button"
-        android:text="@string/activities" />
-
-    <TextView
         android:id="@+id/timeLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -44,12 +35,14 @@
         android:layout_centerHorizontal="true"
         android:textColor="@color/black"
         android:textSize="@dimen/timeLabelTextSize"/>
+
 	<ScrollView
-		android:layout_width="fill_parent"
-		android:layout_height="fill_parent"
-		android:scrollbars="vertical"
-		android:scrollbarFadeDuration="1000"
-		android:layout_below="@+id/activities_title">
+	    android:layout_width="fill_parent"
+	    android:layout_height="fill_parent"
+	    android:layout_below="@+id/done_button"
+	    android:scrollbarFadeDuration="1000"
+	    android:scrollbars="vertical" >
+
 		    <LinearLayout
 		        android:layout_width="fill_parent"
 		        android:layout_height="fill_parent"
