@@ -1,4 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="timeLabelTextSize">50sp</dimen>
+    <dimen name="activityItemHeight">45sp</dimen>
+    <dimen name="activityItemMarginTop">5sp</dimen>
+    <dimen name="activityItemNameTextSize">20sp</dimen>
+    <dimen name="activityItemStartTimeMarginLeft">5sp</dimen>
+    <dimen name="activityItemStartTimeTextSize">16sp</dimen>
+    <dimen name="activityItemDurationMarginRight">5sp</dimen>
+    <dimen name="activityItemDurationTextSize">16sp</dimen>
 </resources>

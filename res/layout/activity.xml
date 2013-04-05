@@ -2,30 +2,32 @@
 <FrameLayout
 	 xmlns:android="http://schemas.android.com/apk/res/android"
 	 android:layout_width="wrap_content"
-	 android:layout_height="50dp"
-	 android:layout_marginTop="10dp">
+	 android:layout_height="@dimen/activityItemHeight"
+	 android:layout_marginTop="@dimen/activityItemMarginTop">
 <TextView
 	 android:id="@+id/activityItemName"
 	 android:layout_width="wrap_content"
 	 android:layout_height="wrap_content"
-	 android:text="TextView"
+	 android:text="@string/dummy_text"
 	 android:layout_gravity="top|center_horizontal"
-	 android:textSize="24sp">
+	 android:textSize="@dimen/activityItemNameTextSize">
 </TextView>
 <TextView
 	 android:id="@+id/activityItemStartTime"
 	 android:layout_width="wrap_content"
 	 android:layout_height="wrap_content"
-	 android:text="TextView"
+	 android:text="@string/dummy_text"
+	 android:textSize="@dimen/activityItemStartTimeTextSize"
 	 android:layout_gravity="bottom|left"
-	 android:layout_marginLeft="5dp">
+	 android:layout_marginLeft="@dimen/activityItemStartTimeMarginLeft">
 </TextView>
 <TextView
 	 android:id="@+id/activityItemDuration"
 	 android:layout_width="wrap_content"
 	 android:layout_height="wrap_content"
-	 android:text="TextView"
+	 android:text="@string/dummy_text"
+	 android:textSize="@dimen/activityItemDurationTextSize"
 	 android:layout_gravity="bottom|right"
-	 android:layout_marginRight="5dp">
+	 android:layout_marginRight="@dimen/activityItemDurationMarginRight">
 </TextView>
 </FrameLayout>

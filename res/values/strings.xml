@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="dummy_text">empty</string>
     <string name="app_name">LazyCure</string>
     <string name="activities">Activities:</string>
     <string name="doneButton_text">Done!</string>
