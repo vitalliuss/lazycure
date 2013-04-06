@@ -10,7 +10,9 @@ import main.java.com.github.lazycure.ui.ActivitiesTableManager;
 
 import main.java.com.github.lazycure.R;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -18,6 +20,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -165,6 +168,15 @@ public class ViewActivitiesActivity extends LazyCureActivity {
             item.setBackgroundColor(backgroundColor);
             
             linLayout.addView(item);
+            
+            final Activity currentActivity = activity;
+            item.setOnLongClickListener(new View.OnLongClickListener() {
+				public boolean onLongClick(View v) {
+					Log.d("View", "Long click on activity " + currentActivity.getName());
+					deleteActivity(currentActivity);
+					return false;
+				}
+    		});
         }
         
         if (activities.size() != 0){
@@ -175,6 +187,33 @@ public class ViewActivitiesActivity extends LazyCureActivity {
 			lastActivity = System.currentTimeMillis();
 		}
 		updateTimer(lastActivity);
+	}
+	
+	/**
+	 * Delete the activity from DB
+	 * @param activityToDelete
+	 */
+	private void deleteActivity(Activity activityToDelete) {
+		final Activity activity = activityToDelete;
+		new AlertDialog.Builder(this)
+	    .setTitle("Delete activity '" + activityToDelete.getName() + "'")
+	    .setMessage("Are you sure you want to delete this activity?")
+	    .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+	        public void onClick(DialogInterface dialog, int which) { 
+	            // continue with delete
+	        	Log.d("Delete", "Deleting activity " + activity.getName());
+	        	db.removeActivity(activity);
+	        	Log.d("Delete", "Deleted successfully");
+	        	addActivity();
+	        }
+	     })
+	    .setNegativeButton("No", new DialogInterface.OnClickListener() {
+	        public void onClick(DialogInterface dialog, int which) { 
+	            // do nothing
+	        	Log.d("Delete", "Delete cancelled");
+	        }
+	     })
+	     .show();
 	}
 	
 	private void setUpViews() {
