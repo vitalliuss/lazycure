@@ -16,14 +16,14 @@ public class ActivityManager {
 	private static DatabaseHandler db = new DatabaseHandler(context);
 	
 	public static void createFirstTestActivity(){
-		Log.d("Test", "First activity created");
+		//Log.d("Test", "First activity created");
 		db.addActivity(new Activity(OutputManager.TEST_ACTIVITY_NAME, null, Time.getCurrentDate()));
 	}
 	
 	public static boolean activityListIsEmpty(){
 		boolean isEmpty = false;
 		int activitiesCount = db.getActivitiesCount();
-		Log.d("DB", "Activities count: " + activitiesCount);
+		//Log.d("DB", "Activities count: " + activitiesCount);
 		if (activitiesCount < 1){
 			isEmpty = true;
 		}
@@ -81,7 +81,7 @@ public class ActivityManager {
 		List<Activity> activities = db.getAllActivities();
 		Activity lastActivity = null;
 		if (activities.size()>0){
-			Log.d("Test", "Activities.size="+activities.size());
+			//Log.d("Test", "Activities.size="+activities.size());
 			lastActivity = activities.get(activities.size()-1);
 		}
 		return lastActivity;

@@ -97,7 +97,7 @@ public class Writer {
 				operationStatus = true;
 			}
 		} catch (IOException e) {
-			Log.e("Writer", "Could not write text file " + e.getMessage());
+			//Log.e("Writer", "Could not write text file " + e.getMessage());
 		}
 		return operationStatus;
 	}
@@ -185,7 +185,7 @@ public class Writer {
 				operationStatus = true;
 			}
 		} catch (IOException e) {
-			Log.e("Writer", "Could not write XLS file " + e.getMessage());
+			//Log.e("Writer", "Could not write XLS file " + e.getMessage());
 		}
 		return operationStatus;
 	}
@@ -246,7 +246,7 @@ public class Writer {
 				operationStatus = true;
 			}
 		} catch (IOException e) {
-			Log.e("Writer", "Could not write XML file " + e.getMessage());
+			//Log.e("Writer", "Could not write XML file " + e.getMessage());
 		}
 		return operationStatus;
 	}

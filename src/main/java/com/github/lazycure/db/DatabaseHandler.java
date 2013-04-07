@@ -64,7 +64,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         values.put(KEY_NAME, activity.getName()); // Activity Name
         values.put(KEY_FINISH_DATE, dateFormat.format(activity.getFinishTime())); // Activity start date
-        Log.d("Insert" , "Inserting [" + activity.getName() + "] with finish date: " + Time.getCurrentDate().toString());
+        //Log.d("Insert" , "Inserting [" + activity.getName() + "] with finish date: " + Time.getCurrentDate().toString());
      
         // Inserting Row
         db.insert(TABLE_ACTIVITIES, null, values);
@@ -78,7 +78,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         String activityFinishDate = dateFormat.format(activity.getFinishTime());
 
         String removeQuery = "DELETE FROM " + TABLE_ACTIVITIES + " WHERE " + KEY_FINISH_DATE + " = '" + activityFinishDate + "'";
-        Log.d("DB", "Executing: " + removeQuery);
+        //Log.d("DB", "Executing: " + removeQuery);
         db.execSQL(removeQuery);
         db.close();
     }

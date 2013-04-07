@@ -33,13 +33,13 @@ public class SplitActivity extends LazyCureActivity {
 	}
 	
 	private void setUpViews(){
-		Log.d("Split", "Splitting: " + inputString);
+		//Log.d("Split", "Splitting: " + inputString);
 		String separationRegex = separationPrefix.concat(separator);
 		String[] activities = inputString.split(separationRegex);
 		final String first = activities[0];
-		Log.d("Split", "First: " + first);
+		//Log.d("Split", "First: " + first);
 		final String second = activities[1];
-		Log.d("Split", "Second: " + second);
+		//Log.d("Split", "Second: " + second);
 		
 		setContentView(R.layout.split);
 		
@@ -55,18 +55,18 @@ public class SplitActivity extends LazyCureActivity {
 
 		Activity lastActivity = ActivityManager.getLastActivity();
 		final Date lastActivityFinishTime = lastActivity.getFinishTime();
-		Log.d("Split", "lastActivityFinishTime: " + lastActivity.getFinishTime().toString());
+		//Log.d("Split", "lastActivityFinishTime: " + lastActivity.getFinishTime().toString());
 		Date now = Time.getCurrentDate();
-		Log.d("Split", "Time.getCurrentDate(): " + now.toString());
+		//Log.d("Split", "Time.getCurrentDate(): " + now.toString());
 		
 		//Calculate total duration without time zone offset
 		long totalDuration = now.getTime() - lastActivityFinishTime.getTime() + (now.getTimezoneOffset()*60*1000);
 		//Create a total duration date
 		Date totalDurationDate = new Date(totalDuration);
 		
-		Log.d("Split", "Total duration: " + new Date(totalDuration));
-		Log.d("Split", "Total duration hours: " + new Date(totalDuration).getHours());
-		Log.d("Split", "Total duration minutes: " + new Date(totalDuration).getMinutes());
+		//Log.d("Split", "Total duration: " + new Date(totalDuration));
+		//Log.d("Split", "Total duration hours: " + new Date(totalDuration).getHours());
+		//Log.d("Split", "Total duration minutes: " + new Date(totalDuration).getMinutes());
 		
 		//Get the total duration time
 		int hour = totalDurationDate.getHours();
@@ -93,7 +93,7 @@ public class SplitActivity extends LazyCureActivity {
 				int newMinute = timePicker.getCurrentMinute();
 				
 				Date userSetDuration = new Date(60*1000*newMinute + 60*60*1000*newHour);
-				Log.d("Split", "User set duration: " + userSetDuration.toString());
+				//Log.d("Split", "User set duration: " + userSetDuration.toString());
 				
 				long firstActivityDurationLong = lastActivityFinishTime.getTime() + userSetDuration.getTime(); 
 				Date firstActivityDuration = new Date(firstActivityDurationLong);
@@ -102,7 +102,7 @@ public class SplitActivity extends LazyCureActivity {
 				Editable secondActivityEdited=(Editable)secondActivity.getText(); 
 				String firstNewName = firstActivityEdited.toString();
 				String secondNewName = secondActivityEdited.toString();
-				Log.d("Split", "First activity duration" + firstActivityDuration.toString());
+				//Log.d("Split", "First activity duration" + firstActivityDuration.toString());
 				ActivityManager.addActivity(firstNewName, firstActivityDuration);
 				ActivityManager.addActivity(secondNewName);
 				finish();
