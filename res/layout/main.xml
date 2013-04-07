@@ -25,7 +25,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/input"
-        android:text="@string/doneButton_text" />
+        android:text="@string/doneButton_text"
+        android:textSize="@dimen/doneButtonTextSize" />
 
     <TextView
         android:id="@+id/timeLabel"
@@ -33,21 +34,23 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
+        android:height="@dimen/timeLabelSize"
         android:textColor="@color/black"
-        android:textSize="@dimen/timeLabelTextSize"/>
+        android:textSize="@dimen/timeLabelTextSize" />
 
-	<ScrollView
-	    android:layout_width="fill_parent"
-	    android:layout_height="fill_parent"
-	    android:layout_below="@+id/done_button"
-	    android:scrollbarFadeDuration="1000"
-	    android:scrollbars="vertical" >
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@+id/done_button"
+        android:scrollbarFadeDuration="1000"
+        android:scrollbars="vertical" >
 
-		    <LinearLayout
-		        android:layout_width="fill_parent"
-		        android:layout_height="fill_parent"
-		        android:id="@+id/main"
-		        android:orientation="vertical" >
-			</LinearLayout>
-	</ScrollView>
+        <LinearLayout
+            android:id="@+id/main"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical" >
+        </LinearLayout>
+    </ScrollView>
+
 </RelativeLayout>

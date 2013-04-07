@@ -6,7 +6,7 @@
     <string name="doneButton_text">Done!</string>
     <string name="backButton_text">Back</string>
     <string name="input_hint">(specify what you are you doing)</string>
-    <string name="title_about">About LazyCure 0.6</string>
+    <string name="title_about">About LazyCure 1.0</string>
     <string name="title_timelog">Time Log</string>
     <string name="title_settings">Settings</string>
     <string name="title_split">Split activity</string>
@@ -17,6 +17,8 @@
     <string name="export_plainText">TXT (plain text)</string>
     <string name="export_button">Export</string>
     <string name="export_LocationHint">You can find timelogs on your SD card in the following folder:</string>
+    <string name="pref_appearance_title">Color</string>
+    <string name="pref_appearance_summary">Change the activities color</string>
     <string name="pref_export_location_title">Export location</string>
     <string name="pref_export_location_summary">Folder to save the logs</string>
     <string name="pref_export_location_default">LazyCure/TimeLogs</string>
