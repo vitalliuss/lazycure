@@ -1,3 +1,8 @@
+LazyCure 1.0:
+ * User can change to activity color
+ * User can delete the activity by long press
+ * Long activities fits the single row on the main screen
+
 LazyCure 0.6:
  * Split activity into two instances with manual time correction
  * Export activity in Timelog format (.timelog) for synchronization with desktop version
