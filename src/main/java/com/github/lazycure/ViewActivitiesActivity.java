@@ -76,19 +76,22 @@ public class ViewActivitiesActivity extends LazyCureActivity {
 	    timeLabel.setText(text);
 	    mRedrawHandler.sleep(Time.ONE_SECOND);
 	  }
+	
+	public void updateSharedPrefs() {
+		SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this);
+        SPLIT_SEPARATOR = sharedPrefs.getString("split_separator", DEFAULT_SPLIT_SEPARATOR);
+        SPLIT_ACTIVITIES = sharedPrefs.getBoolean("split_switcher", true);
+        DEFAULT_ACTIVITY_NAME = sharedPrefs.getString("default_activity_name", DEFAULT_ACTIVITY_NAME_ORIGINAL);
+        DEFAULT_ACTIVITY_MODE = sharedPrefs.getBoolean("default_activity", false);
+        ACTIVITY_COLOR = sharedPrefs.getString("appearance_color", DEFAULT_ACTIVITY_COLOR);
+	}
 
 	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
         
-        SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this);
-        SPLIT_SEPARATOR = sharedPrefs.getString("split_separator", DEFAULT_SPLIT_SEPARATOR);
-        SPLIT_ACTIVITIES = sharedPrefs.getBoolean("split_switcher", true);
-        DEFAULT_ACTIVITY_NAME = sharedPrefs.getString("default_activity_name", DEFAULT_ACTIVITY_NAME_ORIGINAL);
-        DEFAULT_ACTIVITY_MODE = sharedPrefs.getBoolean("default_activity", false);
-        //Log.d("Out", "Color: " + ACTIVITY_COLOR);
-        ACTIVITY_COLOR = sharedPrefs.getString("appearance_color", DEFAULT_ACTIVITY_COLOR);
+        updateSharedPrefs();
         
         setUpViews();
     }
@@ -96,6 +99,7 @@ public class ViewActivitiesActivity extends LazyCureActivity {
 	@Override
 	protected void onResume() {
 		super.onResume();
+		updateSharedPrefs();
 		showActivities();
 	}
 
