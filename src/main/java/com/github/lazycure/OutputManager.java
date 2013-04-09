@@ -13,7 +13,7 @@ public class OutputManager {
 	public final static String EMPTY_STRING = "";
 	public final static String ACTIVITY_PREFIX = "	";
 	public final static String DELIMITER = " ";
-	public final static String TEST_ACTIVITY_NAME = "test";
+	public final static String TEST_ACTIVITY_NAME = "%test_activity%";
 	public final static String DAY_SEPARATION_LINE = "=====";
 	public final static String THREE_DOTS = "...";
 	public final static int SYMBOLS_TO_KEEP = 25;
