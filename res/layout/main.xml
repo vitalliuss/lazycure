@@ -8,16 +8,18 @@
     tools:context=".ViewActivitiesActivity"
     android:color="@color/black" >
 
-    <EditText
+    <AutoCompleteTextView 
         android:id="@+id/input"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/timeLabel"
+        android:popupBackground="@color/darkgrey"
+        android:completionThreshold="1"
         android:hint="@string/input_hint" >
 
         <requestFocus />
-    </EditText>
+    </AutoCompleteTextView >
 
     <Button
         android:id="@+id/done_button"

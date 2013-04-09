@@ -1,5 +1,6 @@
 package main.java.com.github.lazycure.activities;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -89,5 +90,17 @@ public class ActivityManager {
 	
 	public static boolean isFirstActivity(){
 		return (db.getActivitiesCount() == 0);
+	}
+	
+	public static String [] getActivitiesNames() {
+		List<Activity> activities = db.getAllActivities();
+		//Log.d("Test", "Activities.size="+String.valueOf(activities.size()));
+		List<String> activityNames = new ArrayList<String>();
+		for (int i=0; i< activities.size(); i++){
+			activityNames.add(activities.get(i).getName());
+		}
+		String[] names = new String[activityNames.size()];
+		activityNames.toArray(names); // fill the array
+		return names;
 	}
 }

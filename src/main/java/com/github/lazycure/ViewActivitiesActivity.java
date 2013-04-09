@@ -28,6 +28,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -131,9 +133,6 @@ public class ViewActivitiesActivity extends LazyCureActivity {
 	}
 
 	private void showActivities() {
-		if (ActivityManager.activityListIsEmpty()){
-			ActivityManager.createFirstTestActivity();
-		}
         List<Activity> activities = db.getAllActivities();
         OutputManager.updateActivitiesWithStartTime(activities);
 		//Reverse the activities order
@@ -232,6 +231,19 @@ public class ViewActivitiesActivity extends LazyCureActivity {
 				addActivity();
 			}
 		});
+		
+		if (ActivityManager.activityListIsEmpty()){
+			ActivityManager.createFirstTestActivity();
+		}
+		
+		// Get a reference to the AutoCompleteTextView in the layout
+		AutoCompleteTextView textView = (AutoCompleteTextView) findViewById(R.id.input);
+		// Get the string array
+		String[] activities = ActivityManager.getActivitiesNames();
+		// Create the adapter and set it to the AutoCompleteTextView 
+		ArrayAdapter<String> adapter = 
+		        new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, activities);
+		textView.setAdapter(adapter);
 
 		clearInput();
 	}
