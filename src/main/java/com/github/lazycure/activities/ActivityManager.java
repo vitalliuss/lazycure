@@ -2,7 +2,9 @@ package main.java.com.github.lazycure.activities;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import main.java.com.github.lazycure.LazyCureApplication;
 import main.java.com.github.lazycure.OutputManager;
@@ -95,7 +97,7 @@ public class ActivityManager {
 	public static String [] getActivitiesNames() {
 		List<Activity> activities = db.getAllActivities();
 		//Log.d("Test", "Activities.size="+String.valueOf(activities.size()));
-		List<String> activityNames = new ArrayList<String>();
+		Set<String> activityNames = new HashSet<String>();
 		for (int i=0; i< activities.size(); i++){
 			activityNames.add(activities.get(i).getName());
 		}
