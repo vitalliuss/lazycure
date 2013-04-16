@@ -56,24 +56,24 @@ public class TimeTest extends TestCase {
 	}
 	@Test
 	public void testHoursToMinutest() {
-		assertEquals(0, Time.HoursToMinutes(0));
-		assertEquals(60, Time.HoursToMinutes(1));
-		assertEquals(120, Time.HoursToMinutes(2));
+		assertEquals(0, Time.hoursToMinutes(0));
+		assertEquals(60, Time.hoursToMinutes(1));
+		assertEquals(120, Time.hoursToMinutes(2));
 	}
 	@Test
 	public void testMinutestToHoursAndMunites() {
-		assertEquals("00:00", Time.MinutestToHoursAndMunites(0));
-		assertEquals("01:00", Time.MinutestToHoursAndMunites(60));
-		assertEquals("02:00", Time.MinutestToHoursAndMunites(120));
-		assertEquals("01:01", Time.MinutestToHoursAndMunites(61));
-		assertEquals("01:59", Time.MinutestToHoursAndMunites(119));
+		assertEquals("00:00", Time.minutesToHoursAndMunites(0));
+		assertEquals("01:00", Time.minutesToHoursAndMunites(60));
+		assertEquals("02:00", Time.minutesToHoursAndMunites(120));
+		assertEquals("01:01", Time.minutesToHoursAndMunites(61));
+		assertEquals("01:59", Time.minutesToHoursAndMunites(119));
 	}
 	@Test
 	public void testHoursAndMinutestToMinutes() {
-		assertEquals(0, Time.HoursAndMinutestToMinutes(0, 0));
-		assertEquals(1, Time.HoursAndMinutestToMinutes(0, 1));
-		assertEquals(60, Time.HoursAndMinutestToMinutes(1, 0));
-		assertEquals(61, Time.HoursAndMinutestToMinutes(1, 1));
-		assertEquals(179, Time.HoursAndMinutestToMinutes(2, 59));
+		assertEquals(0, Time.hoursAndMinutestToMinutes(0, 0));
+		assertEquals(1, Time.hoursAndMinutestToMinutes(0, 1));
+		assertEquals(60, Time.hoursAndMinutestToMinutes(1, 0));
+		assertEquals(61, Time.hoursAndMinutestToMinutes(1, 1));
+		assertEquals(179, Time.hoursAndMinutestToMinutes(2, 59));
 	}
 }

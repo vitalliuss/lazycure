@@ -22,6 +22,7 @@ public class SplitActivity extends LazyCureActivity {
 	private String inputString = null;
 	private String separator = ",";
 	private String separationPrefix = "\\";
+	private String EMPTY = "";
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -36,10 +37,18 @@ public class SplitActivity extends LazyCureActivity {
 		//Log.d("Split", "Splitting: " + inputString);
 		String separationRegex = separationPrefix.concat(separator);
 		String[] activities = inputString.split(separationRegex);
-		final String first = activities[0];
-		//Log.d("Split", "First: " + first);
-		final String second = activities[1];
-		//Log.d("Split", "Second: " + second);
+		
+		String first = EMPTY;
+		String second = EMPTY;
+		try {
+			first = activities[0];
+			Log.d("Split", "First: " + first);
+			second = activities[1];
+			Log.d("Split", "Second: " + second);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		setContentView(R.layout.split);
 		
@@ -69,17 +78,17 @@ public class SplitActivity extends LazyCureActivity {
 		//Log.d("Split", "Total duration minutes: " + new Date(totalDuration).getMinutes());
 		
 		//Get the total duration time
-		int hour = totalDurationDate.getHours();
-		int minute = totalDurationDate.getMinutes();
-		int totalMinutes = Time.HoursAndMinutestToMinutes(hour, minute);
+		final int hour = totalDurationDate.getHours();
+		final int minute = totalDurationDate.getMinutes();
+		final int totalMinutes = Time.hoursAndMinutestToMinutes(hour, minute);
 		
 		//Set the total time to window title
-		String totalTimeString = Time.MinutestToHoursAndMunites(totalMinutes);
+		String totalTimeString = Time.minutesToHoursAndMunites(totalMinutes);
 		this.setTitle(getString(R.string.title_split) + " - " + totalTimeString);
 		
 		//Set the time for TimePicker
 		int halfMinutes = totalMinutes / 2;
-		String halfTimeString = Time.MinutestToHoursAndMunites(halfMinutes);
+		String halfTimeString = Time.minutesToHoursAndMunites(halfMinutes);
 		int halfTimeHour = Integer.parseInt(halfTimeString.split("\\:")[0]);
 		int halfTimeMinute = Integer.parseInt(halfTimeString.split("\\:")[1]);
 		
@@ -89,14 +98,29 @@ public class SplitActivity extends LazyCureActivity {
 		splitButton.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				//Get the user set hours and minutes from the time picker
+				timePicker.clearFocus();
 				int newHour = timePicker.getCurrentHour();
 				int newMinute = timePicker.getCurrentMinute();
+				//Log.d("Split", "User set hours: " + newHour);
+				//Log.d("Split", "User set minute: " + newMinute);
 				
-				Date userSetDuration = new Date(60*1000*newMinute + 60*60*1000*newHour);
-				//Log.d("Split", "User set duration: " + userSetDuration.toString());
+				int totalNewMinutes = Time.hoursAndMinutestToMinutes(newHour, newMinute);
+				//Log.d("Split", "Total was: " + totalMinutes);
 				
-				long firstActivityDurationLong = lastActivityFinishTime.getTime() + userSetDuration.getTime(); 
+				if (totalNewMinutes > totalMinutes) {
+					newHour = hour;
+					newMinute = minute;
+				}
+				//Log.d("Split", "Total new: " + totalNewMinutes);
+				
+				//Date userSetDuration = new Date(60*1000*newMinute + 60*60*1000*newHour);
+				long userSetDuration = 60*1000*newMinute + 60*60*1000*newHour;
+				//Log.d("Split", "User set duration: " + userSetDuration);
+				
+				long firstActivityDurationLong = lastActivityFinishTime.getTime() + userSetDuration; 
+				//Log.d("Split", "firstActivityDurationLong " + firstActivityDurationLong);
 				Date firstActivityDuration = new Date(firstActivityDurationLong);
+				//Log.d("Split", "userSetDuration " + userSetDuration);
 				
 				Editable firstActivityEdited=(Editable)firstActivity.getText(); 
 				Editable secondActivityEdited=(Editable)secondActivity.getText(); 

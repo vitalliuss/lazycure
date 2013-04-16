@@ -195,7 +195,7 @@ public class Time {
 	 * @param hours
 	 * @return minutes
 	 */
-	public static int HoursToMinutes(int hours) {
+	public static int hoursToMinutes(int hours) {
 		return (int) (hours * MINUTES);
 	}
 	
@@ -204,7 +204,7 @@ public class Time {
 	 * @param minutesCount
 	 * @return time string
 	 */
-	public static String MinutestToHoursAndMunites(int minutesCount) {
+	public static String minutesToHoursAndMunites(int minutesCount) {
 		int hours = minutesCount / 60;
 		int minutes = minutesCount % 60;
 		String result = String.format("%02d:%02d", hours, minutes);
@@ -217,7 +217,7 @@ public class Time {
 	 * @param minutes
 	 * @return minutest total
 	 */
-	public static int HoursAndMinutestToMinutes(int hours, int minutes) {
+	public static int hoursAndMinutestToMinutes(int hours, int minutes) {
 		int result = (hours * 60) + minutes;
 		return result;
 	}
