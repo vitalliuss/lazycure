@@ -5,6 +5,7 @@ import java.util.List;
 
 import main.java.com.github.lazycure.activities.Activity;
 import main.java.com.github.lazycure.db.DatabaseHandler;
+import main.java.com.github.lazycure.ui.ActivitiesTableManager;
 
 import main.java.com.github.lazycure.R;
 
@@ -45,6 +46,18 @@ public class ExportActivity extends LazyCureActivity {
         setUpViews();
     }
 	
+	private List<Activity> getActivitiesForPrint() {
+		ActivitiesTableManager activitiesTableManager = new ActivitiesTableManager(this);
+		List<Activity> activities = db.getAllActivities();
+		activitiesTableManager.removeTestActivity(activities);
+        OutputManager.updateActivitiesWithStartTime(activities);
+		//Reverse the activities order
+        Collections.reverse(activities);
+        //Remove test activity
+        activitiesTableManager.removeTestActivity(activities);
+		return activities;
+	}
+	
 	private void setUpViews() {
 		exportButton = (Button)findViewById(R.id.exportButton);
 		exportLocation = (TextView)findViewById(R.id.exportLocation);
@@ -79,11 +92,7 @@ public class ExportActivity extends LazyCureActivity {
 		String activitiesList = EMPTY_STRING;
 		String today = Time.getYYYYMMDD(Time.getCurrentDate());
 		String filename = today + TXT_EXTENSION;
-		List<Activity> activities = db.getAllActivities();
-        OutputManager.updateActivitiesWithStartTime(activities);
-		//Reverse the activities order
-        Collections.reverse(activities);
-		//Print out the activities
+		List<Activity> activities = getActivitiesForPrint();
         activitiesList = OutputManager.formatActivitiesList(activities);
 		if (Writer.writeFile(EXPORT_LOCATION, filename, activitiesList)){
 			Toast.makeText(context, "Saved as Plain Text to " + EXPORT_LOCATION, Toast.LENGTH_SHORT).show();
@@ -96,10 +105,7 @@ public class ExportActivity extends LazyCureActivity {
 	public void exportTimeLogAsXLS() {
 		String today = Time.getYYYYMMDD(Time.getCurrentDate());
 		String filename = today + XLS_EXTENSION;
-		List<Activity> activities = db.getAllActivities();
-		OutputManager.updateActivitiesWithStartTime(activities);
-		//Reverse the activities order
-        Collections.reverse(activities);
+		List<Activity> activities = getActivitiesForPrint();
         if (Writer.writeActivitiesInXLS(EXPORT_LOCATION, filename, activities)){
 			Toast.makeText(context, "Saved as XLS file to " + EXPORT_LOCATION, Toast.LENGTH_SHORT).show();
 		}
@@ -111,8 +117,7 @@ public class ExportActivity extends LazyCureActivity {
 	public void exportTimeLogAsTimelog() {
 		String today = Time.getYYYYMMDD(Time.getCurrentDate());
 		String filename = today + TIMELOG_EXTENSION;
-		List<Activity> activities = db.getAllActivities();
-		OutputManager.updateActivitiesWithStartTime(activities);
+		List<Activity> activities = getActivitiesForPrint();
         if (Writer.writeActivitiesInTimeLog(EXPORT_LOCATION, filename, activities)){
 			Toast.makeText(context, "Saved as Timelog file to " + EXPORT_LOCATION, Toast.LENGTH_SHORT).show();
 		}
