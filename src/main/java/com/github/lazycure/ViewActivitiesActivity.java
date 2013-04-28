@@ -10,6 +10,7 @@ import main.java.com.github.lazycure.ui.ActivitiesTableManager;
 
 import main.java.com.github.lazycure.R;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -20,7 +21,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.preference.PreferenceManager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -30,8 +30,8 @@ import android.view.ViewGroup.LayoutParams;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
-import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -42,7 +42,9 @@ import android.widget.TextView;
 public class ViewActivitiesActivity extends LazyCureActivity {
 
 	private long lastActivity = 0;
-	private Button doneButton;
+	private ImageButton doneButton;
+	private ImageButton menuButton;
+	private ImageButton settingsButton;
 	private TextView timeLabel;
 	private EditText activityNameEditText;
 	DatabaseHandler db = new DatabaseHandler(this);
@@ -53,10 +55,11 @@ public class ViewActivitiesActivity extends LazyCureActivity {
 	private String DEFAULT_ACTIVITY_NAME_ORIGINAL = "rest";
 	private String DEFAULT_ACTIVITY_NAME = DEFAULT_ACTIVITY_NAME_ORIGINAL;
 	private boolean DEFAULT_ACTIVITY_MODE = false;
-	private String DEFAULT_ACTIVITY_COLOR = "blue"; 
+	private String DEFAULT_ACTIVITY_COLOR = "yellow"; 
 	private String ACTIVITY_COLOR = DEFAULT_ACTIVITY_COLOR;
 	
 	private RefreshHandler mRedrawHandler = new RefreshHandler();
+		@SuppressLint("HandlerLeak")
 		class RefreshHandler extends Handler {
 		    @Override
 		    public void handleMessage(Message msg) {
@@ -155,7 +158,7 @@ public class ViewActivitiesActivity extends LazyCureActivity {
         	String name = OutputManager.cropName(activity.getName());
         	String start = Time.formatAndRoundWithDefaultTimeZone(activity.getStartTime());
         	String duration = Time.formatAndRoundWithDay(activity.getDuration());
-        	int textColor = Color.WHITE;
+        	int textColor = Color.BLACK;
         	//Log.d("Out", "Color parse: " + ACTIVITY_COLOR);
         	int backgroundColor = Color.parseColor(ACTIVITY_COLOR);
         	//int backgroundColor = Color.parseColor("black");
@@ -226,13 +229,31 @@ public class ViewActivitiesActivity extends LazyCureActivity {
 	}
 	
 	private void setUpViews() {
-		doneButton = (Button)findViewById(R.id.done_button);
+		doneButton = (ImageButton)findViewById(R.id.done_button);
 		activityNameEditText = (EditText)findViewById(R.id.input);
 		timeLabel = (TextView) this.findViewById(R.id.timeLabel);
+		menuButton = (ImageButton)findViewById(R.id.menu);
+		settingsButton = (ImageButton)findViewById(R.id.settings);
 		
 		doneButton.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				addActivity();
+			}
+		});
+		
+		menuButton.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				Intent timeLogView = new Intent();
+				timeLogView.setClass(LazyCureApplication.getAppContext(), TimeLogActivity.class);
+	        	startActivity(timeLogView);
+			}
+		});
+		
+		settingsButton.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				Intent settings = new Intent();
+	        	settings.setClass(LazyCureApplication.getAppContext(), SettingsActivity.class);
+	        	startActivity(settings);
 			}
 		});
 		

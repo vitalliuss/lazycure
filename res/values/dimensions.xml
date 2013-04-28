@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="timeLabelSize">50sp</dimen>
-    <dimen name="timeLabelTextSize">40sp</dimen>
+    <dimen name="timeLabelSize">52sp</dimen>
+    <dimen name="timeLabelTextSize">45sp</dimen>
     <dimen name="doneButtonTextSize">20sp</dimen>
     <dimen name="footerSize">32sp</dimen>
     <dimen name="activityItemHeight">45sp</dimen>
@@ -11,4 +11,8 @@
     <dimen name="activityItemStartTimeTextSize">16sp</dimen>
     <dimen name="activityItemDurationMarginRight">5sp</dimen>
     <dimen name="activityItemDurationTextSize">16sp</dimen>
+    <dimen name="logoSizeX">130sp</dimen>
+    <dimen name="logoSizeY">30sp</dimen>
+    <dimen name="defaultMargin">5sp</dimen>
+    <dimen name="smallButtonsSize">45sp</dimen>
 </resources>
