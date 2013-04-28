@@ -1,3 +1,6 @@
 *.class
+Thumbs.db
 bin/
 target/
+release/
+keystore
