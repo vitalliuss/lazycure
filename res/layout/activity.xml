@@ -4,12 +4,16 @@
 	 android:layout_width="wrap_content"
 	 android:layout_height="@dimen/activityItemHeight"
 	 android:layout_marginTop="@dimen/activityItemMarginTop">
+
 <TextView
 	 android:id="@+id/activityItemName"
 	 android:layout_width="wrap_content"
 	 android:layout_height="wrap_content"
 	 android:text="@string/dummy_text"
-	 android:layout_gravity="top|center_horizontal"
+	 android:textColor="@color/yellow"
+	 android:layout_gravity="top|left"
+	 android:layout_marginLeft="@dimen/activityItemMarginLeft"
+	 android:layout_marginTop="@dimen/activityItemMarginTop"
 	 android:textSize="@dimen/activityItemNameTextSize">
 </TextView>
 <TextView
@@ -17,15 +21,18 @@
 	 android:layout_width="wrap_content"
 	 android:layout_height="wrap_content"
 	 android:text="@string/dummy_text"
+	 android:textColor="@color/yellow"
 	 android:textSize="@dimen/activityItemStartTimeTextSize"
 	 android:layout_gravity="bottom|left"
-	 android:layout_marginLeft="@dimen/activityItemStartTimeMarginLeft">
+	 android:layout_marginBottom="@dimen/activityItemStartTimeMarginBottom"
+	 android:layout_marginLeft="@dimen/activityItemMarginLeft">
 </TextView>
 <TextView
 	 android:id="@+id/activityItemDuration"
 	 android:layout_width="wrap_content"
 	 android:layout_height="wrap_content"
 	 android:text="@string/dummy_text"
+	 android:textColor="@color/yellow"
 	 android:textSize="@dimen/activityItemDurationTextSize"
 	 android:layout_gravity="bottom|right"
 	 android:layout_marginRight="@dimen/activityItemDurationMarginRight">

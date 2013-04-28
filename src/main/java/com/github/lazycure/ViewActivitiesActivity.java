@@ -17,6 +17,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -158,7 +159,7 @@ public class ViewActivitiesActivity extends LazyCureActivity {
         	String name = OutputManager.cropName(activity.getName());
         	String start = Time.formatAndRoundWithDefaultTimeZone(activity.getStartTime());
         	String duration = Time.formatAndRoundWithDay(activity.getDuration());
-        	int textColor = Color.BLACK;
+        	int textColor = Color.WHITE;
         	//Log.d("Out", "Color parse: " + ACTIVITY_COLOR);
         	int backgroundColor = Color.parseColor(ACTIVITY_COLOR);
         	//int backgroundColor = Color.parseColor("black");
@@ -169,15 +170,16 @@ public class ViewActivitiesActivity extends LazyCureActivity {
             activityItemName.setTextColor(textColor);
 
             TextView activityItemStartTime = (TextView) item.findViewById(R.id.activityItemStartTime);
-            activityItemStartTime.setText("Start: " + start);
+            activityItemStartTime.setText("start: " + start);
             activityItemStartTime.setTextColor(textColor);
             
             TextView activityItemDuration = (TextView) item.findViewById(R.id.activityItemDuration);
-            activityItemDuration.setText("Duration: " + duration);
+            activityItemDuration.setText("duration: " + duration);
             activityItemDuration.setTextColor(textColor);
             
             item.getLayoutParams().width = LayoutParams.FILL_PARENT;
-            item.setBackgroundColor(backgroundColor);
+            item.setBackgroundDrawable(getResources().getDrawable(R.drawable.activity));
+            //item.setBackgroundColor(backgroundColor);
             
             linLayout.addView(item);
             
