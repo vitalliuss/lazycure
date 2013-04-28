@@ -19,6 +19,7 @@ public final class R {
         public static final int blue=0x7f070002;
         public static final int darkgrey=0x7f070003;
         public static final int white=0x7f070000;
+        public static final int yellow=0x7f070004;
     }
     public static final class dimen {
         public static final int activityItemDurationMarginRight=0x7f080009;
@@ -28,47 +29,67 @@ public final class R {
         public static final int activityItemNameTextSize=0x7f080006;
         public static final int activityItemStartTimeMarginLeft=0x7f080007;
         public static final int activityItemStartTimeTextSize=0x7f080008;
+        public static final int defaultMargin=0x7f08000d;
         public static final int doneButtonTextSize=0x7f080002;
         public static final int footerSize=0x7f080003;
+        public static final int logoSizeX=0x7f08000b;
+        public static final int logoSizeY=0x7f08000c;
+        public static final int smallButtonsSize=0x7f08000e;
         public static final int timeLabelSize=0x7f080000;
         public static final int timeLabelTextSize=0x7f080001;
     }
     public static final class drawable {
-        public static final int ic_launcher=0x7f020000;
-        public static final int icon_about=0x7f020001;
-        public static final int icon_export=0x7f020002;
-        public static final int icon_settings=0x7f020003;
-        public static final int icon_timelog=0x7f020004;
+        public static final int button_done=0x7f020000;
+        public static final int button_done_pressed=0x7f020001;
+        public static final int button_done_unpressed=0x7f020002;
+        public static final int edittext=0x7f020003;
+        public static final int edittext_pressed=0x7f020004;
+        public static final int edittext_unpressed=0x7f020005;
+        public static final int ic_launcher=0x7f020006;
+        public static final int icon_about=0x7f020007;
+        public static final int icon_export=0x7f020008;
+        public static final int icon_settings=0x7f020009;
+        public static final int icon_timelog=0x7f02000a;
+        public static final int logo=0x7f02000b;
+        public static final int menu=0x7f02000c;
+        public static final int menu_pressed=0x7f02000d;
+        public static final int menu_unpressed=0x7f02000e;
+        public static final int new_button=0x7f02000f;
+        public static final int settings=0x7f020010;
+        public static final int settings_pressed=0x7f020011;
+        public static final int settings_unpressed=0x7f020012;
     }
     public static final class id {
-        public static final int about=0x7f0b001a;
+        public static final int about=0x7f0b001d;
         public static final int aboutText=0x7f0b0001;
         public static final int activityItemDuration=0x7f0b0004;
         public static final int activityItemName=0x7f0b0002;
         public static final int activityItemStartTime=0x7f0b0003;
         public static final int backButton=0x7f0b0000;
         public static final int done_button=0x7f0b000f;
-        public static final int export=0x7f0b0018;
+        public static final int export=0x7f0b001b;
         public static final int exportButton=0x7f0b000a;
         public static final int exportInvitation=0x7f0b0005;
         public static final int exportLocation=0x7f0b000c;
         public static final int exportLocationHint=0x7f0b000b;
         public static final int fileType=0x7f0b0006;
         public static final int input=0x7f0b000d;
-        public static final int main=0x7f0b0010;
+        public static final int logo=0x7f0b0010;
+        public static final int main=0x7f0b0013;
+        public static final int menu=0x7f0b0011;
         public static final int radio0=0x7f0b0007;
         public static final int radio1=0x7f0b0008;
         public static final int radio2=0x7f0b0009;
-        public static final int settings=0x7f0b001b;
-        public static final int split_button=0x7f0b0012;
-        public static final int split_first_activity=0x7f0b0013;
-        public static final int split_hint=0x7f0b0015;
-        public static final int split_message=0x7f0b0011;
-        public static final int split_second_activity=0x7f0b0016;
-        public static final int split_timer=0x7f0b0014;
+        public static final int settings=0x7f0b0012;
+        public static final int split_button=0x7f0b0015;
+        public static final int split_first_activity=0x7f0b0016;
+        public static final int split_hint=0x7f0b0018;
+        public static final int split_message=0x7f0b0014;
+        public static final int split_second_activity=0x7f0b0019;
+        public static final int split_timer=0x7f0b0017;
         public static final int timeLabel=0x7f0b000e;
-        public static final int timeLogTable=0x7f0b0017;
-        public static final int timeLogView=0x7f0b0019;
+        public static final int timeLogTable=0x7f0b001a;
+        public static final int timeLogView=0x7f0b001c;
     }
     public static final class layout {
         public static final int about=0x7f030000;
