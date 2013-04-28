@@ -5,7 +5,7 @@
     <string name="activities">Activities:</string>
     <string name="doneButton_text">Done!</string>
     <string name="backButton_text">Back</string>
-    <string name="input_hint">(specify what you are you doing)</string>
+    <string name="input_hint">(specify what you are doing)</string>
     <string name="title_about">About LazyCure 1.0</string>
     <string name="title_timelog">Time Log</string>
     <string name="title_settings">Settings</string>
