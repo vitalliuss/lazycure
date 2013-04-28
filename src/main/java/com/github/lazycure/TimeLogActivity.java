@@ -11,12 +11,8 @@ import main.java.com.github.lazycure.ui.TimeLogManager;
 import main.java.com.github.lazycure.R;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.widget.TableLayout;
-import android.widget.TableRow;
-import android.widget.TextView;
-import android.widget.TableRow.LayoutParams;
 
 public class TimeLogActivity extends LazyCureActivity {
 
