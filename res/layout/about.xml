@@ -2,8 +2,8 @@
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:background="@color/white"
-		android:color="@color/black" >
+        android:background="@color/black"
+		android:color="@color/yellow" >
 
         <Button
             android:id="@+id/backButton"
@@ -16,7 +16,8 @@
 
         <TextView
             android:id="@+id/aboutText"
-            android:textColor="@color/black"
+            android:background="@color/black"
+            android:textColor="@color/yellow"
             android:ellipsize="none"
 			android:scrollHorizontally="false"
 			android:focusable="true"

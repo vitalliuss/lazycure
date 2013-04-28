@@ -3,8 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@color/white"
-    android:color="@color/black" >
+    android:background="@color/black"
+    android:color="@color/yellow" >
 	<ScrollView
 			android:layout_width="fill_parent"
 			android:layout_height="fill_parent"
@@ -17,7 +17,7 @@
 			android:scrollbarFadeDuration="1000">
 				<TableLayout
 				    android:id="@+id/timeLogTable"
-				    android:background="@color/white"
+				    android:background="@color/black"
 				    android:scrollbarAlwaysDrawVerticalTrack="true"
 				    android:layout_width="wrap_content"
 				    android:layout_height="wrap_content"

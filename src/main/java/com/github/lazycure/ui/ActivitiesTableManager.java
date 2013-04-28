@@ -141,7 +141,7 @@ public class ActivitiesTableManager {
 	public TextView createTextViewCell(String content){
 		TextView view = createCell();
 		view.setText(content);
-		view.setTextColor(Color.BLACK);
+		view.setTextColor(Color.YELLOW);
 		return view;
 	}
 
