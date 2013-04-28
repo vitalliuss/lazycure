@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-    <PreferenceCategory
+    <!-- <PreferenceCategory
         android:title="Appearance"
         android:key="appearance_category">
 	    <ListPreference
 	        android:key="appearance_color"
 	        android:title="@string/pref_appearance_title"
 	        android:summary="@string/pref_appearance_summary"
-	        android:defaultValue="blue"
+	        android:defaultValue="yellow"
             android:entries="@array/colors"
             android:entryValues="@array/colorsValues" />
-    </PreferenceCategory>
+    </PreferenceCategory> -->
     
     <PreferenceCategory
         android:title="Export"
