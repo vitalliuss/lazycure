@@ -2,8 +2,8 @@
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:background="@color/white"
-        android:color="@color/black" >
+        android:background="@color/black"
+        android:color="@color/yellow" >
  >
 
         <TextView
@@ -13,7 +13,7 @@
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:gravity="center"
-            android:textColor="@color/black"
+            android:textColor="@color/yellow"
             android:text="@string/split_message"/>
 
         <Button
@@ -40,7 +40,7 @@
             android:layout_below="@+id/split_message"
             android:layout_centerHorizontal="true"
             android:text="@string/split_first_activity_time_message"
-            android:textColor="@color/black" />
+            android:textColor="@color/yellow" />
 
         <TimePicker
             android:id="@+id/split_timer"
