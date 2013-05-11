@@ -84,6 +84,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/logo"
         android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/timeLabelMarginBottom"
         android:height="@dimen/timeLabelSize"
         android:text="00:00:00"
         android:textColor="@color/yellow"
