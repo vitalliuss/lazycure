@@ -178,8 +178,7 @@ public class ViewActivitiesActivity extends LazyCureActivity {
             activityItemDuration.setTextColor(textColor);
             
             item.getLayoutParams().width = LayoutParams.FILL_PARENT;
-            item.setBackgroundDrawable(getResources().getDrawable(R.drawable.activity));
-            //item.setBackgroundColor(backgroundColor);
+            item.setBackgroundDrawable(getResources().getDrawable(R.drawable.activity_background));
             
             linLayout.addView(item);
             
