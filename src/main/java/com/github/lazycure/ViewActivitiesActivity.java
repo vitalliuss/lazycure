@@ -17,7 +17,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -56,8 +55,6 @@ public class ViewActivitiesActivity extends LazyCureActivity {
 	private String DEFAULT_ACTIVITY_NAME_ORIGINAL = "rest";
 	private String DEFAULT_ACTIVITY_NAME = DEFAULT_ACTIVITY_NAME_ORIGINAL;
 	private boolean DEFAULT_ACTIVITY_MODE = false;
-	private String DEFAULT_ACTIVITY_COLOR = "yellow"; 
-	private String ACTIVITY_COLOR = DEFAULT_ACTIVITY_COLOR;
 	
 	private RefreshHandler mRedrawHandler = new RefreshHandler();
 		@SuppressLint("HandlerLeak")
@@ -87,7 +84,6 @@ public class ViewActivitiesActivity extends LazyCureActivity {
         SPLIT_ACTIVITIES = sharedPrefs.getBoolean("split_switcher", true);
         DEFAULT_ACTIVITY_NAME = sharedPrefs.getString("default_activity_name", DEFAULT_ACTIVITY_NAME_ORIGINAL);
         DEFAULT_ACTIVITY_MODE = sharedPrefs.getBoolean("default_activity", false);
-        ACTIVITY_COLOR = sharedPrefs.getString("appearance_color", DEFAULT_ACTIVITY_COLOR);
 	}
 
 	@Override
@@ -160,9 +156,6 @@ public class ViewActivitiesActivity extends LazyCureActivity {
         	String start = Time.formatAndRoundWithDefaultTimeZone(activity.getStartTime());
         	String duration = Time.formatAndRoundWithDay(activity.getDuration());
         	int textColor = Color.WHITE;
-        	//Log.d("Out", "Color parse: " + ACTIVITY_COLOR);
-        	int backgroundColor = Color.parseColor(ACTIVITY_COLOR);
-        	//int backgroundColor = Color.parseColor("black");
         	
             View item = ltInflater.inflate(R.layout.activity, linLayout, false);
             TextView activityItemName = (TextView) item.findViewById(R.id.activityItemName);
