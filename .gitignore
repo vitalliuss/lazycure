@@ -1,6 +1,19 @@
+#Android generated
+bin
+gen
+
+#Eclipse
+.project
+.classpath
+.settings
+.checkstyle
+
+#Maven
+target
+release.properties
+pom.xml.*
+
 *.class
 Thumbs.db
-bin/
-target/
 release/
 keystore
