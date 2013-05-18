@@ -127,40 +127,48 @@ public class Writer {
 
 		// Generate column headings
 		Row row = sheet1.createRow(0);
-
 		c = row.createCell(0);
-		c.setCellValue("Start Time");
+		c.setCellValue("Date");
 		c.setCellStyle(header);
 
 		c = row.createCell(1);
-		c.setCellValue("Name");
+		c.setCellValue("Start Time");
 		c.setCellStyle(header);
 
 		c = row.createCell(2);
-		c.setCellValue("Duration");
+		c.setCellValue("Name");
 		c.setCellStyle(header);
 
 		c = row.createCell(3);
+		c.setCellValue("Duration");
+		c.setCellStyle(header);
+
+		c = row.createCell(4);
 		c.setCellValue("Finish Time");
 		c.setCellStyle(header);
 
 		for (int i = 0; i < activities.size(); i++) {
 			Row activityRow = sheet1.createRow(i + 1);
-			// Start Time
+			//Set Date
 			c = activityRow.createCell(0);
+			c.setCellValue(Time.getYYYYMMDD(activities.get(i)
+					.getStartTime()));
+			c.setCellStyle(activityStyle);
+			// Start Time
+			c = activityRow.createCell(1);
 			c.setCellValue(Time.formatWithDefaultTimeZone(activities.get(i)
 					.getStartTime()));
 			c.setCellStyle(activityStyle);
 			// Name
-			c = activityRow.createCell(1);
+			c = activityRow.createCell(2);
 			c.setCellValue(activities.get(i).getName());
 			c.setCellStyle(activityStyle);
 			// Duration
-			c = activityRow.createCell(2);
+			c = activityRow.createCell(3);
 			c.setCellValue(Time.formatWithDay(activities.get(i).getDuration()));
 			c.setCellStyle(activityStyle);
 			// Finish Time
-			c = activityRow.createCell(3);
+			c = activityRow.createCell(4);
 			c.setCellValue(Time.formatWithDefaultTimeZone(activities.get(i)
 					.getFinishTime()));
 			c.setCellStyle(activityStyle);
@@ -170,6 +178,7 @@ public class Writer {
 		sheet1.setColumnWidth(1, (15 * 500));
 		sheet1.setColumnWidth(2, (15 * 500));
 		sheet1.setColumnWidth(3, (15 * 500));
+		sheet1.setColumnWidth(4, (15 * 500));
 
 		File root = new File(Environment.getExternalStorageDirectory(),
 				directoryName);
