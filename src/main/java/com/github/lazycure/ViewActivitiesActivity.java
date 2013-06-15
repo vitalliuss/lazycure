@@ -163,11 +163,11 @@ public class ViewActivitiesActivity extends LazyCureActivity {
             activityItemName.setTextColor(textColor);
 
             TextView activityItemStartTime = (TextView) item.findViewById(R.id.activityItemStartTime);
-            activityItemStartTime.setText("start: " + start);
+            activityItemStartTime.setText(R.string.label_start + start);
             activityItemStartTime.setTextColor(textColor);
             
             TextView activityItemDuration = (TextView) item.findViewById(R.id.activityItemDuration);
-            activityItemDuration.setText("duration: " + duration);
+            activityItemDuration.setText(R.string.label_duration + duration);
             activityItemDuration.setTextColor(textColor);
             
             item.getLayoutParams().width = LayoutParams.FILL_PARENT;
@@ -202,8 +202,8 @@ public class ViewActivitiesActivity extends LazyCureActivity {
 	private void deleteActivity(Activity activityToDelete) {
 		final Activity activity = activityToDelete;
 		new AlertDialog.Builder(this)
-	    .setTitle("Delete activity '" + activityToDelete.getName() + "'")
-	    .setMessage("Are you sure you want to delete this activity?")
+	    .setTitle(R.string.delete_title + " '" + activityToDelete.getName() + "'")
+	    .setMessage(R.string.delete_message)
 	    .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
 	        public void onClick(DialogInterface dialog, int which) { 
 	            // continue with delete

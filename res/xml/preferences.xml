@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
     <PreferenceCategory
-        android:title="Export"
+        android:title="@string/pref_export_title"
         android:key="export_category">
 	    <EditTextPreference
 	        android:key="export_location"
@@ -11,7 +11,7 @@
     </PreferenceCategory>
     
     <PreferenceCategory
-        android:title="Splitting"
+        android:title="@string/pref_split_title"
         android:key="splitting_category">
 	    <CheckBoxPreference
 	        android:key="split_switcher"
@@ -27,7 +27,7 @@
     </PreferenceCategory>
     
     <PreferenceCategory
-        android:title="Advanced"
+        android:title="@string/pref_advanced_title"
         android:key="advanced_category">
 	    <CheckBoxPreference
 	        android:key="default_activity"
