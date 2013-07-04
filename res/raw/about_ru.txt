@@ -1,0 +1,9 @@
+<h2>Что такое LazyCure?</h2>
+
+LazyCure - LazyCure — инструмент хронометража, удобная программа для логирования времени, его анализа, повышения осознанности своей работы, для подсчёта и повышения личной эффективности. 
+Это мобильная версия десктопного приложения <a href="http://lazycure.com/"> LazyCure</a>.
+
+<h2>Нашли ошибки? Есть вопросы?</h2>
+
+Если вы видите что что-то идет не так, пожалуйста создайте баг на <a href="https://github.com/vitalliuss/lazycure/issues">GitHub странице</a>.
+Есть вопросы? Смело спрашивайте по <a href="mailto:vitalliuss@gmail.com?Subject=LazyCure%20on%20Android">vitalliuss@gmail.com</a>.

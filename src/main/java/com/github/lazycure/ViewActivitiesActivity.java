@@ -49,11 +49,9 @@ public class ViewActivitiesActivity extends LazyCureActivity {
 	private EditText activityNameEditText;
 	DatabaseHandler db = new DatabaseHandler(this);
 	private ActivitiesTableManager activitiesTableManager = new ActivitiesTableManager(this);
-	private String DEFAULT_SPLIT_SEPARATOR = ",";
-	private String SPLIT_SEPARATOR = DEFAULT_SPLIT_SEPARATOR;
-	private boolean SPLIT_ACTIVITIES = true;
-	private String DEFAULT_ACTIVITY_NAME_ORIGINAL = "rest";
-	private String DEFAULT_ACTIVITY_NAME = DEFAULT_ACTIVITY_NAME_ORIGINAL;
+	private String SPLIT_SEPARATOR = Strings.DEFAULT_SPLIT_SEPARATOR;
+	private boolean SPLIT_ACTIVITIES = true; 
+	private String DEFAULT_ACTIVITY_NAME = Strings.DEFAULT_ACTIVITY_NAME_ORIGINAL;
 	private boolean DEFAULT_ACTIVITY_MODE = false;
 	
 	private RefreshHandler mRedrawHandler = new RefreshHandler();
@@ -80,9 +78,9 @@ public class ViewActivitiesActivity extends LazyCureActivity {
 	
 	public void updateSharedPrefs() {
 		SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this);
-        SPLIT_SEPARATOR = sharedPrefs.getString("split_separator", DEFAULT_SPLIT_SEPARATOR);
+        SPLIT_SEPARATOR = sharedPrefs.getString("split_separator", Strings.DEFAULT_SPLIT_SEPARATOR);
         SPLIT_ACTIVITIES = sharedPrefs.getBoolean("split_switcher", true);
-        DEFAULT_ACTIVITY_NAME = sharedPrefs.getString("default_activity_name", DEFAULT_ACTIVITY_NAME_ORIGINAL);
+        DEFAULT_ACTIVITY_NAME = sharedPrefs.getString("default_activity_name", Strings.DEFAULT_ACTIVITY_NAME_ORIGINAL);
         DEFAULT_ACTIVITY_MODE = sharedPrefs.getBoolean("default_activity", false);
 	}
 
@@ -163,11 +161,11 @@ public class ViewActivitiesActivity extends LazyCureActivity {
             activityItemName.setTextColor(textColor);
 
             TextView activityItemStartTime = (TextView) item.findViewById(R.id.activityItemStartTime);
-            activityItemStartTime.setText("start: " + start);
+            activityItemStartTime.setText(Strings.START + ": " + start);
             activityItemStartTime.setTextColor(textColor);
             
             TextView activityItemDuration = (TextView) item.findViewById(R.id.activityItemDuration);
-            activityItemDuration.setText("duration: " + duration);
+            activityItemDuration.setText(Strings.DURATION + ": " + duration);
             activityItemDuration.setTextColor(textColor);
             
             item.getLayoutParams().width = LayoutParams.FILL_PARENT;
@@ -202,9 +200,9 @@ public class ViewActivitiesActivity extends LazyCureActivity {
 	private void deleteActivity(Activity activityToDelete) {
 		final Activity activity = activityToDelete;
 		new AlertDialog.Builder(this)
-	    .setTitle("Delete activity '" + activityToDelete.getName() + "'")
-	    .setMessage("Are you sure you want to delete this activity?")
-	    .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+	    .setTitle(Strings.DELETE_TITLE + " '" + activityToDelete.getName() + "'")
+	    .setMessage(Strings.DELETE_MESSAGE)
+	    .setPositiveButton(Strings.YES, new DialogInterface.OnClickListener() {
 	        public void onClick(DialogInterface dialog, int which) { 
 	            // continue with delete
 	        	//Log.d("Delete", "Deleting activity " + activity.getName());
@@ -213,7 +211,7 @@ public class ViewActivitiesActivity extends LazyCureActivity {
 	        	addActivity();
 	        }
 	     })
-	    .setNegativeButton("No", new DialogInterface.OnClickListener() {
+	    .setNegativeButton(Strings.NO, new DialogInterface.OnClickListener() {
 	        public void onClick(DialogInterface dialog, int which) { 
 	            // do nothing
 	        	//Log.d("Delete", "Delete cancelled");

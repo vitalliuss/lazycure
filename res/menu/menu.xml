@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:id="@+id/export"
-        android:title="Export"
+        android:title="@string/menu_export"
         android:icon="@drawable/icon_export" />
     <item android:id="@+id/timeLogView"
-        android:title="Time Log"
+        android:title="@string/menu_timeLog"
         android:icon="@drawable/icon_timelog" />
     <item android:id="@+id/about"
-        android:title="About"
+        android:title="@string/menu_about"
         android:icon="@drawable/icon_about" />
     <item android:id="@+id/settings"
-        android:title="Settings"
+        android:title="@string/menu_settings"
         android:icon="@drawable/icon_settings" />
 </menu>

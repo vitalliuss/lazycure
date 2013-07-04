@@ -39,7 +39,13 @@ public class AboutActivity extends Activity {
 	    // call setMovementMethod() on the TextView object.
 	    TextView aboutText = (TextView) findViewById(R.id.aboutText);
 	    aboutText.setMovementMethod(LinkMovementMethod.getInstance());
-		aboutText.setText(Html.fromHtml(readRawTextFile(LazyCureApplication.getAppContext(), R.raw.about)));
+	    String locale = this.getResources().getConfiguration().locale.getLanguage();
+	    if (locale.equalsIgnoreCase("ru")) {
+	    	aboutText.setText(Html.fromHtml(readRawTextFile(LazyCureApplication.getAppContext(), R.raw.about_ru)));
+	    }
+	    else {
+	    	aboutText.setText(Html.fromHtml(readRawTextFile(LazyCureApplication.getAppContext(), R.raw.about)));
+	    }
 				
 		backButton.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {

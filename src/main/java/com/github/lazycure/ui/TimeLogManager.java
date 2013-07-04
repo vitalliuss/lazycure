@@ -3,9 +3,9 @@ package main.java.com.github.lazycure.ui;
 import java.util.List;
 
 import main.java.com.github.lazycure.LazyCureApplication;
+import main.java.com.github.lazycure.Strings;
 import main.java.com.github.lazycure.Time;
 import main.java.com.github.lazycure.activities.Activity;
-
 
 import android.content.Context;
 import android.widget.TableLayout;
@@ -60,20 +60,16 @@ public class TimeLogManager extends ActivitiesTableManager {
 	 * Create first row with columns names
 	 */
 	public void buildHeader() {
-		String start = "Start";
-		String name = "Name";
-		String duration = "Duration";
-		String finish = "Finish";
 
 		TableRow tr = new TableRow(context);
 		tr.setLayoutParams(new LayoutParams(LayoutParams.FILL_PARENT,
 				LayoutParams.WRAP_CONTENT));
 
 		// create header cells
-		TextView labelStart = createTextViewCell(start);
-		TextView labelName = createTextViewCell(name);
-		TextView labelDuration = createTextViewCell(duration);
-		TextView labelEnd = createTextViewCell(finish);
+		TextView labelStart = createTextViewCell(Strings.START);
+		TextView labelName = createTextViewCell(Strings.NAME);
+		TextView labelDuration = createTextViewCell(Strings.DURATION);
+		TextView labelEnd = createTextViewCell(Strings.FINISH);
 
 		// add header to the row
 		tr.addView(labelStart);

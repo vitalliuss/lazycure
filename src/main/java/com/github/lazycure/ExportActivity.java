@@ -95,10 +95,10 @@ public class ExportActivity extends LazyCureActivity {
 		List<Activity> activities = getActivitiesForPrint();
         activitiesList = OutputManager.formatActivitiesList(activities);
 		if (Writer.writeFile(EXPORT_LOCATION, filename, activitiesList)){
-			Toast.makeText(context, "Saved as Plain Text to " + EXPORT_LOCATION, Toast.LENGTH_SHORT).show();
+			Toast.makeText(context, Strings.EXPORTED_AS_PLAINT_TEXT+ " " + EXPORT_LOCATION, Toast.LENGTH_SHORT).show();
 		}
 		else{
-			Toast.makeText(context, "Cannot save the file to " + EXPORT_LOCATION, Toast.LENGTH_SHORT).show();
+			Toast.makeText(context, Strings.EXPORT_FAILED + " " + EXPORT_LOCATION, Toast.LENGTH_SHORT).show();
 		}
 	}
 	
@@ -107,10 +107,10 @@ public class ExportActivity extends LazyCureActivity {
 		String filename = today + XLS_EXTENSION;
 		List<Activity> activities = getActivitiesForPrint();
         if (Writer.writeActivitiesInXLS(EXPORT_LOCATION, filename, activities)){
-			Toast.makeText(context, "Saved as XLS file to " + EXPORT_LOCATION, Toast.LENGTH_SHORT).show();
+			Toast.makeText(context, Strings.EXPORTED_AS_XLS+ " " + EXPORT_LOCATION, Toast.LENGTH_SHORT).show();
 		}
 		else{
-			Toast.makeText(context, "Cannot save the file to " + EXPORT_LOCATION, Toast.LENGTH_SHORT).show();
+			Toast.makeText(context, Strings.EXPORT_FAILED+ " " + EXPORT_LOCATION, Toast.LENGTH_SHORT).show();
 		}
 	}
 	
@@ -119,10 +119,10 @@ public class ExportActivity extends LazyCureActivity {
 		String filename = today + TIMELOG_EXTENSION;
 		List<Activity> activities = getActivitiesForPrint();
         if (Writer.writeActivitiesInTimeLog(EXPORT_LOCATION, filename, activities)){
-			Toast.makeText(context, "Saved as Timelog file to " + EXPORT_LOCATION, Toast.LENGTH_SHORT).show();
+			Toast.makeText(context, Strings.EXPORTED_AS_TIMELOG+ " " + EXPORT_LOCATION, Toast.LENGTH_SHORT).show();
 		}
 		else{
-			Toast.makeText(context, "Cannot save the file to " + EXPORT_LOCATION, Toast.LENGTH_SHORT).show();
+			Toast.makeText(context, Strings.EXPORT_FAILED+ " " + EXPORT_LOCATION, Toast.LENGTH_SHORT).show();
 		}
 	}
 

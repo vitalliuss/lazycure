@@ -65,7 +65,7 @@
         android2:gravity="center"
         android2:text="@string/export_LocationHint"
         android2:textAppearance="?android:attr/textAppearanceMedium"
-        android2:textColor="@color/black" />
+        android2:textColor="@color/yellow" />
 
     <TextView
         android2:id="@+id/exportLocation"
@@ -75,6 +75,6 @@
         android2:layout_centerHorizontal="true"
         android2:text="@string/pref_export_location_default"
         android2:textAppearance="?android:attr/textAppearanceMedium"
-        android2:textColor="@color/black" />
+        android2:textColor="@color/yellow" />
 
 </RelativeLayout>
