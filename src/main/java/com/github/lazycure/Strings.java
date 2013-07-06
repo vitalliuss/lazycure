@@ -20,5 +20,6 @@ public class Strings {
 	public static final String NAME = context.getResources().getString(R.string.name);
 	public static final String DELETE_TITLE = context.getResources().getString(R.string.deleteTitle);
 	public static final String DELETE_MESSAGE = context.getResources().getString(R.string.deleteMessage);
+	public static final String TEST_ACTIVITY_NAME = "%test_activity%";
 
 }

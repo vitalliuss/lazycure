@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import main.java.com.github.lazycure.Strings;
 import main.java.com.github.lazycure.Time;
 import main.java.com.github.lazycure.activities.Activity;
 
@@ -130,6 +131,45 @@ public class DatabaseHandler extends SQLiteOpenHelper {
  
         // return count
         return count;
+    }
+    
+    //Get most frequent activities
+    public List<Activity> getTopActivities(int limit) {
+    	List<Activity> activityList = new ArrayList<Activity>();
+    	SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    	String getTopQuery = "SELECT *" 
+    			+ " FROM " + TABLE_ACTIVITIES
+    			+ " WHERE " + KEY_NAME
+    			+ " <> '" + Strings.TEST_ACTIVITY_NAME + "'"
+    			+ " GROUP BY " + KEY_NAME
+    			+ " ORDER BY count(*) DESC"
+    			+ " LIMIT " + String.valueOf(limit);
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(getTopQuery, null);
+    	
+        // looping through all rows and adding to list
+        if (cursor.moveToFirst()) {
+            do {
+         	   String name = cursor.getString(0);
+         	   String date = cursor.getString(1);
+         	   Date finishDate = null;
+ 				try {
+ 					finishDate = dateFormat.parse(date);
+ 				} catch (ParseException e) {
+ 					// TODO Auto-generated catch block
+ 					e.printStackTrace();
+ 				}
+         	   Activity activity = new Activity(name, null, finishDate);
+                // Adding activity to list
+         	   activityList.add(activity);
+            } while (cursor.moveToNext());
+        }
+        
+        cursor.close();
+        db.close();
+     
+        // return activity list
+        return activityList;
     }
 
 }

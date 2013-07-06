@@ -3,6 +3,7 @@ package main.java.com.github.lazycure.ui;
 import java.util.List;
 
 import main.java.com.github.lazycure.OutputManager;
+import main.java.com.github.lazycure.Strings;
 import main.java.com.github.lazycure.Time;
 import main.java.com.github.lazycure.activities.Activity;
 import android.content.Context;
@@ -73,7 +74,7 @@ public class ActivitiesTableManager {
 		if (activities.size() != 0) {
 			int lastPosition = activities.size()-1;
 			Activity _last = activities.get(lastPosition);
-			if (_last.getName().equalsIgnoreCase(OutputManager.TEST_ACTIVITY_NAME)) {
+			if (_last.getName().equalsIgnoreCase(Strings.TEST_ACTIVITY_NAME)) {
 				activities.remove(lastPosition);
 			}
 		}

@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Set;
 
 import main.java.com.github.lazycure.LazyCureApplication;
-import main.java.com.github.lazycure.OutputManager;
+import main.java.com.github.lazycure.Strings;
 import main.java.com.github.lazycure.Time;
 import main.java.com.github.lazycure.db.DatabaseHandler;
 import android.content.Context;
@@ -20,7 +20,7 @@ public class ActivityManager {
 	
 	public static void createFirstTestActivity(){
 		//Log.d("Test", "First activity created");
-		db.addActivity(new Activity(OutputManager.TEST_ACTIVITY_NAME, null, Time.getCurrentDate()));
+		db.addActivity(new Activity(Strings.TEST_ACTIVITY_NAME, null, Time.getCurrentDate()));
 	}
 	
 	public static boolean activityListIsEmpty(){

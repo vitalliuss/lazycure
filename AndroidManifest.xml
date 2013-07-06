@@ -22,5 +22,6 @@
         <activity android:name=".TimeLogActivity" android:label="@string/title_timelog" />
         <activity android:name=".SettingsActivity" android:label="@string/title_settings" />
         <activity android:name=".SplitActivity" android:label="@string/title_split" />
+        <activity android:name=".StatsActivity" android:label="@string/title_stats" />
     </application>
 </manifest>

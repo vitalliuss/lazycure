@@ -20,6 +20,7 @@
     <string name="title_settings">Настройки</string>
     <string name="title_split">Разделение активностей</string>
     <string name="title_export">Экспорт активностей</string>
+    <string name="title_stats">Статистика</string>
     <string name="export_invitation">Пожалуйста выберите формат файла:</string>
     <string name="export_timelog">TimeLog (XML-подобный)</string>
     <string name="export_Xls">XLS (MS Excel)</string>
@@ -57,4 +58,5 @@
     <string name="menu_timeLog">Лог времени</string>
     <string name="menu_about">О программе</string>
     <string name="menu_settings">Настройки</string>
+    <string name="menu_stats">Статистика</string>
 </resources>
