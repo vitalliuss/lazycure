@@ -10,7 +10,7 @@ import main.java.com.github.lazycure.ui.ActivitiesTableManager;
 
 import main.java.com.github.lazycure.R;
 
-import android.annotation.SuppressLint;
+//import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -55,7 +55,7 @@ public class ViewActivitiesActivity extends LazyCureActivity {
 	private boolean DEFAULT_ACTIVITY_MODE = false;
 	
 	private RefreshHandler mRedrawHandler = new RefreshHandler();
-		@SuppressLint("HandlerLeak")
+		//@SuppressLint("HandlerLeak")
 		class RefreshHandler extends Handler {
 		    @Override
 		    public void handleMessage(Message msg) {
