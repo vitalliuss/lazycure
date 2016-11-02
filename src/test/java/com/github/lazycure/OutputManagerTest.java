@@ -3,7 +3,6 @@ package test.java.com.github.lazycure;
 import java.util.Date;
 
 import main.java.com.github.lazycure.OutputManager;
-import main.java.com.github.lazycure.Time;
 import main.java.com.github.lazycure.activities.Activity;
 
 import org.junit.Test;
