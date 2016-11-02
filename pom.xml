@@ -19,7 +19,7 @@
   <dependency>
    <groupId>com.google.android</groupId>
    <artifactId>android</artifactId>
-   <version>2.1.2</version>
+   <version>2.2.1</version>
    <scope>provided</scope>
   </dependency>
   
@@ -79,7 +79,7 @@
         <configuration>
           <sdk>
             <!-- platform as api level (api level 7 = platform Android 2.1.x)-->
-            <platform>7</platform>
+            <platform>8</platform>
           </sdk>
         </configuration>
       </plugin>
