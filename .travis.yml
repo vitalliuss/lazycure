@@ -15,5 +15,5 @@ before_install:
   # If machine is 64 bit download 32 bit android
   - if [ `uname -m` = x86_64 ]; then sudo apt-get install -qq --force-yes libgd2-xpm ia32-libs ia32-libs-multiarch; fi
   # Install required Android components
-  - android update sdk --filter platform-tools,android-7,extra-android-support --no-ui --force
+  - android update sdk --filter platform-tools,android-8,extra-android-support --no-ui --force
 script: sudo mvn clean test
