@@ -7,4 +7,4 @@ android:
     - extra-android-m2repository
 notifications:
   email: false
-script: sudo mvn clean test
+script: mvn test
