@@ -73,15 +73,18 @@
       </plugins>
     </pluginManagement>
     <plugins>
-      <plugin>
-        <groupId>com.jayway.maven.plugins.android.generation2</groupId>
-        <artifactId>android-maven-plugin</artifactId>
-        <configuration>
-          <sdk>
-            <!-- platform as api level (api level 7 = platform Android 2.1.x)-->
-            <platform>8</platform>
-          </sdk>
-        </configuration>
+      <plugin> 
+      	<groupId>com.simpligility.maven.plugins</groupId>
+      	<artifactId>android-maven-plugin</artifactId>
+      	<version>4.0.0</version>
+      	<configuration>
+      	  <sdk>
+      	    <platform>8</platform>
+      	  </sdk>
+      	  <deleteConflictingFiles>true</deleteConflictingFiles>
+      	  <undeployBeforeDeploy>true</undeployBeforeDeploy>
+      	</configuration>
+      	<extensions>true</extensions>
       </plugin>
     </plugins>
   </build>

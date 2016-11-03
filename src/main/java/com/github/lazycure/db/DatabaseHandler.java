@@ -5,9 +5,9 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import main.java.com.github.lazycure.Strings;
-import main.java.com.github.lazycure.Time;
 import main.java.com.github.lazycure.activities.Activity;
 
 
@@ -16,7 +16,6 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
 
 public class DatabaseHandler extends SQLiteOpenHelper {
 	
@@ -60,7 +59,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     // Adding new activity
     public void addActivity(Activity activity) {
         SQLiteDatabase db = this.getWritableDatabase();
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); 
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.US); 
      
         ContentValues values = new ContentValues();
         values.put(KEY_NAME, activity.getName()); // Activity Name
@@ -75,7 +74,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     //Removing activity
     public void removeActivity(Activity activity){
     	SQLiteDatabase db = this.getWritableDatabase();
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.US);
         String activityFinishDate = dateFormat.format(activity.getFinishTime());
 
         String removeQuery = "DELETE FROM " + TABLE_ACTIVITIES + " WHERE " + KEY_FINISH_DATE + " = '" + activityFinishDate + "'";
@@ -93,7 +92,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
        SQLiteDatabase db = this.getWritableDatabase();
        Cursor cursor = db.rawQuery(selectQuery, null);
        
-       SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+       SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.US);
     
        // looping through all rows and adding to list
        if (cursor.moveToFirst()) {
@@ -136,7 +135,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     //Get most frequent activities
     public List<Activity> getTopActivities(int limit) {
     	List<Activity> activityList = new ArrayList<Activity>();
-    	SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    	SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.US);
     	String getTopQuery = "SELECT *" 
     			+ " FROM " + TABLE_ACTIVITIES
     			+ " WHERE " + KEY_NAME
